@@ -1,10 +1,18 @@
 @import "../style/mixins.module.scss";
 @import "../style/colors.module.scss";
 
-.background {
-    width: 100%;
+.bgWrap {
+    position: fixed;
     height: 100vh;
+    width: 100vw;
+    overflow: hidden;
     z-index: -1;
+
+    .background {
+        width: 100%;
+        height: 100vh;
+        object-fit: cover;
+    }
 }
 .conten_wrapper {
     height: 100vh;
@@ -86,6 +94,31 @@
                 }
             }
         }
+        .text_contact_number {
+            color: $color-white;
+            font-size: 32px;
+            font-weight: 400;
+            line-height: 32px;
+            text-transform: lowercase;
+            margin-bottom: 40px;
+          
+            span {
+                color: $color-white;
+                font-size: 24px;
+                font-weight: 200;
+                text-transform: lowercase;
+            }
+            @media (max-width: 770px) {
+                    color: $color-white;
+                    font-size: 14px;
+                    line-height: 16px;
+                    margin-bottom: 20px;
+                    span {
+                        font-size: 12px;
+                        line-height: 14px;
+                    }
+            }
+        }
         .text_contacts_media {
             display: none;
         }
@@ -106,7 +139,7 @@
                 @include flex(flex, row, flex-start, stretch);
 
                 .social_media_icons  {
-                    margin-right: 10px;
+                    margin-right: 30px;
 
                     img {
                         width: 48px;

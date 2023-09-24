@@ -5,8 +5,6 @@ import background from '../assets/images/background.jpg';
 import Logo from '../assets/images/logo.svg';
 import facebook from '../assets/images/facebook.svg';
 import instagram from '../assets/images/instagram.svg';
-import telegram from '../assets/images/telegram.svg';
-import viber from '../assets/images/viber.svg';
 
 import styles from './styles.module.scss';
 
@@ -19,14 +17,6 @@ const socialMediaIcons: Array<TypeIcons> = [
     icon: instagram,
     link: 'https://www.instagram.com/alt_era_com/',
   },
-  {
-    icon: telegram,
-    link: 'https://telegram.me/+380677903040',
-  },
-  {
-    icon: viber,
-    link: 'viber://chat?number=%2B0677903040',
-  },
 ];
 
   type TypeIcons = {
@@ -36,15 +26,17 @@ const socialMediaIcons: Array<TypeIcons> = [
 
 const TemporaryPage = () => (
   <main>
-    <Image
-      fill
-      priority
-      quality={100}
-      placeholder='blur'
-      src={background}
-      alt='website background'
-      className={styles.background}
-    />
+    <div className={styles.bgWrap}>
+      <Image
+        fill
+        priority
+        quality={100}
+        placeholder='blur'
+        src={background}
+        alt='website background'
+        className={styles.background}
+      />
+    </div>
     <div className={styles.conten_wrapper}>
       <div className={styles.block_contacts}>
         <Image
@@ -56,7 +48,7 @@ const TemporaryPage = () => (
           alt='website log'
           className={styles.logo}
         />
-        <span className={styles.text_contacts}>0677903040 | alt-era@ukr.net</span>
+        <span className={styles.text_contacts}>alt-era@ukr.net</span>
       </div>
       <div className={styles.block_content}>
         <div className={styles.block_title}>
@@ -68,8 +60,12 @@ const TemporaryPage = () => (
         </div>
         <div className={styles.wrapper_media_icons}>
           <div>
+            <p className={styles.text_contact_number}>
+              0677903040
+              <span> (Viber, Telegram)</span>
+            </p>
             <p className={styles.text_contacts_media}>
-              0677903040 | alt-era@ukr.net
+              alt-era@ukr.net
             </p>
           </div>
           <div className={styles.block_media_icons}>
