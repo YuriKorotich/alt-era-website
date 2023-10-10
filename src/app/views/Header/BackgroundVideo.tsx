@@ -20,6 +20,7 @@ const BackgroundVideo = ({ screenWidthMobile }: { screenWidthMobile: boolean }) 
   const [domLoaded, setDomLoaded] = useState<boolean>(false);
   const [videoLoaded, setVideoLoaded] = useState<boolean>(false);
   const playerRef = useRef<ReactPlayerProps>(null);
+  const [interactionStarted, setInteractionStarted] = useState<boolean>(false);
 
   const videoSourcePc = '/video/backgroundVideo.mp4';
   const mobileVideoBackground = '/video/mobileVideoBackground.mp4';
@@ -49,6 +50,25 @@ const BackgroundVideo = ({ screenWidthMobile }: { screenWidthMobile: boolean }) 
     return undefined;
   }, []);
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const handleFirstInteraction = () => {
+        setInteractionStarted(true);
+      };
+
+      window.addEventListener('click', handleFirstInteraction);
+      window.addEventListener('touchstart', handleFirstInteraction);
+
+      return () => {
+        window.removeEventListener('click', handleFirstInteraction);
+        window.removeEventListener('touchstart', handleFirstInteraction);
+      };
+    }
+    return undefined;
+  }, []);
+
+  const shouldPlay = domLoaded && (videoLoaded || interactionStarted);
+
   return (
     domLoaded && (
       <div className={styles.player_wrapper}>
@@ -64,9 +84,9 @@ const BackgroundVideo = ({ screenWidthMobile }: { screenWidthMobile: boolean }) 
         )}
         <ReactPlayer
           ref={playerRef}
+          playing={shouldPlay}
           loop
           muted
-          playing
           playsInline
           controls={false}
           url={screenWidthMobile ? mobileVideoBackground : videoSourcePc}
