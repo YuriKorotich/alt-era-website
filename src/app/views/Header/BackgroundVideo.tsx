@@ -20,7 +20,6 @@ const BackgroundVideo = ({ screenWidthMobile }: { screenWidthMobile: boolean }) 
   const [domLoaded, setDomLoaded] = useState<boolean>(false);
   const [videoLoaded, setVideoLoaded] = useState<boolean>(false);
   const playerRef = useRef<ReactPlayerProps>(null);
-  const [interactionStarted, setInteractionStarted] = useState<boolean>(false);
 
   const videoSourcePc = '/video/backgroundVideo.mp4';
   const mobileVideoBackground = '/video/mobileVideoBackground.mp4';
@@ -32,42 +31,10 @@ const BackgroundVideo = ({ screenWidthMobile }: { screenWidthMobile: boolean }) 
   }, []);
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const handleFirstInteraction = () => {
-        if (playerRef.current) {
-          playerRef.current.getInternalPlayer().play();
-        }
-      };
-
-      window.addEventListener('click', handleFirstInteraction);
-      window.addEventListener('touchstart', handleFirstInteraction);
-
-      return () => {
-        window.removeEventListener('click', handleFirstInteraction);
-        window.removeEventListener('touchstart', handleFirstInteraction);
-      };
+    if (domLoaded && playerRef.current) {
+      playerRef.current.getInternalPlayer().play();
     }
-    return undefined;
-  }, []);
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const handleFirstInteraction = () => {
-        setInteractionStarted(true);
-      };
-
-      window.addEventListener('click', handleFirstInteraction);
-      window.addEventListener('touchstart', handleFirstInteraction);
-
-      return () => {
-        window.removeEventListener('click', handleFirstInteraction);
-        window.removeEventListener('touchstart', handleFirstInteraction);
-      };
-    }
-    return undefined;
-  }, []);
-
-  const shouldPlay = domLoaded && (videoLoaded || interactionStarted);
+  }, [domLoaded]);
 
   return (
     domLoaded && (
@@ -83,10 +50,9 @@ const BackgroundVideo = ({ screenWidthMobile }: { screenWidthMobile: boolean }) 
           />
         )}
         <ReactPlayer
-          ref={playerRef}
-          playing={shouldPlay}
           loop
           muted
+          playing
           playsInline
           controls={false}
           url={screenWidthMobile ? mobileVideoBackground : videoSourcePc}
@@ -95,7 +61,7 @@ const BackgroundVideo = ({ screenWidthMobile }: { screenWidthMobile: boolean }) 
           type='video/mp4'
           preload='metadata'
           onReady={() => setVideoLoaded(true)}
-          className={`${styles.react_player} ${!videoLoaded ? styles.videoLoaded : ''}`}
+          className={`${styles.react_player} ${!screenWidthMobile || videoLoaded ? styles.videoLoaded : ''}`}
           config={{
             file: {
               attributes: {

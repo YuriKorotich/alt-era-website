@@ -50,7 +50,9 @@ const Navigation = ({ isMobile }: { isMobile: boolean }) => {
 
   useEffect((): void => {
     window.scrollTo(0, 0);
+  }, []);
 
+  useEffect((): void => {
     if (activeClass) {
       blockScroll();
     } else {

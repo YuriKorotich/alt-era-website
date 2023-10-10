@@ -1,25 +1,14 @@
 import React from 'react';
 import Image from 'next/image';
 
-import background from '../../../../../public/images/content-images/CompanyGoal.jpg';
+import background from '../../../../../public/images/content-images/CompanyGoalBg.jpg';
+import CompanyGoalMobileBg from '../../../../../public/images/content-images/CompanyGoalMobileBg.jpg';
 
 import styles from './styles.module.scss';
 
-// import NextImage from '../../../components/NextImage';
-//  <NextImage
-//    fill={true}
-//    priority={true}
-//    quality={100}
-//    placeholder='blur'
-//    src={src}
-//    alt='background'
-//    objectFit='cover'
-//    className={styles.background}
-//  />
-
 const CompanyGoal = () => (
   <section>
-    <div className={styles.wrapper} id='section_Company_Goal'>
+    <div className={styles.wrapper}>
       <div className={styles.bgWrap}>
         <Image
           fill
@@ -29,7 +18,15 @@ const CompanyGoal = () => (
           src={background}
           alt='background'
           className={styles.background}
-          id={styles.background}
+        />
+        <Image
+          fill
+          priority
+          quality={100}
+          placeholder='blur'
+          src={CompanyGoalMobileBg}
+          alt='background'
+          className={styles.background_mobile}
         />
       </div>
       <div className={styles.block_content} data-aos='fade-up'>
