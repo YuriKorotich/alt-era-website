@@ -1,3 +1,5 @@
+/* eslint-disable quotes */
+/* eslint-disable @typescript-eslint/quotes */
 import type { Config } from 'tailwindcss';
 
 const config: Config = {

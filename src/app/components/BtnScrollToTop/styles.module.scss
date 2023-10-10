@@ -1,0 +1,24 @@
+@import '../../style/colors.module.scss';
+
+.top_to_btm{
+    position: relative;
+
+    .icon_position{
+      position: fixed;
+      bottom: 40px;
+      right: 25px;
+      z-index: 20;
+    }
+    
+    .icon_style{
+      background: $color-white;;
+      border: 1px solid $color-white;
+      border-radius: 50%;
+      height: 50px;
+      width: 50px;
+      color: $color-white;
+      cursor: pointer;
+      animation: movebtn 3s ease-in-out infinite;
+      transition: all .5s ease-in-out;
+    }
+  }

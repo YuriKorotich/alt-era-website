@@ -1,0 +1,110 @@
+@import '../../style/mixins.module.scss';
+@import '../../style/colors.module.scss';
+
+.wrapper {
+    height: 100vh;
+    padding: 100px 50px;
+    position: relative;
+    @include flex(flex, row, space-around, center);
+
+    .bgWrap {
+        position: absolute;
+        height: 100vh;
+        width: 100%;
+        overflow: hidden;
+        z-index: -1;
+    
+        .background {
+            width: 100%;
+            height: 100vh;
+            object-fit: cover;
+        }
+    }
+
+    .block_contacts {
+        height: 462px;
+        width: 100%;
+        @include flex(flex, row, space-around, flex-start);
+
+        .title_mobile {
+            display: none;
+            color: $color-yellow;
+            font-size: 48px;
+            line-height: normal;
+            font-weight: 400;
+            padding-bottom: 30px;
+        }
+
+        .image_wrap {
+            max-width: 534px;
+            height: 462px;
+            margin-right: 40px;
+
+              .logo {
+                width: 300px;
+                min-width: 260px;
+                height: 60px;
+            }
+          }
+          .contacts {
+            width: 100%;
+            max-width: 534px;
+            height: 462px;
+            padding: 40px 60px;
+            background: rgba(99, 99, 98, 0.70);
+        
+            .title {
+                color: $color-yellow;
+                font-size: 48px;
+                line-height: normal;
+                font-weight: 400;
+                padding-bottom: 30px;
+            }
+            
+            ul {
+                color: $color-white;
+                @include flex(flex, column, flex-start, flex-start);
+            
+                li {
+                    height: 100px;
+                    @include flex(flex, row, space-between, center);
+            
+                    img {
+                        margin-right: 20px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 880px) {
+    .wrapper {
+        padding: 100px 0px;
+        
+        .block_contacts {
+            width: 100%;
+            @include flex(flex, column, center, flex-start);
+
+            .title_mobile {
+                display: block;
+                padding: 0px 0px 60px 20px;
+                font-size: 32px;
+            }
+            .image_wrap {
+                display: none;
+            }
+
+            .contacts {
+                width: 100%;
+                max-width: 100%;
+                @include flex(flex, row, flex-start, center);
+                padding: 40px 22px;
+
+                .title {
+                    display: none;
+                }
+            }
+        }
+    }
+}

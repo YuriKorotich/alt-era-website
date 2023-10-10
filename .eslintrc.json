@@ -18,35 +18,43 @@
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "eslint.workingDirectories": [{ "mode": "auto"}],
     "project": "tsconfig.json",
+    "ecmaVersion": "latest",
+    "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
     },
-    "ecmaVersion": "latest",
-    "sourceType": "module"
+    "eslint.workingDirectories": [{ "mode": "auto"}]
   },
   "plugins": ["react", "@typescript-eslint", "react-hooks"],
   "rules": {
     "no-use-before-define": "off",
-    "react/no-unused-prop-types": "off",
-    "import/extensions": ["error", "ignorePackages", {
-      "js": "never",
-      "jsx": "never",
-      "ts": "never",
-      "tsx": "never"
-    }],
-    "linebreak-style": 0,
+    "react/jsx-fragments": "off",
+    // "import/no-unresolved": "off",
     "react/react-in-jsx-scope": "off",
+    "react/no-unused-prop-types": "off",
+    "react/require-default-props": "off",
     "import/prefer-default-export": "off",
-    "space-before-function-paren": [
-      "warn",
-      { "anonymous": "always", "named": "never", "asyncArrow": "always" }
-    ],
+    "import/no-extraneous-dependencies": "off",
+  //   "import/no-extraneous-dependencies": [
+  //     "error", {
+  //        "devDependencies": false, 
+  //        "optionalDependencies": false, 
+  //        "peerDependencies": false, 
+  //        "usePackageJson": true,
+  //        "packageDir": "./"
+  //     }
+  // ],
+    // "no-trailing-whitespace": [true, "ignore-jsdoc"],
+    "linebreak-style": 0,
     "no-unused-vars": "warn",
     "no-console": "warn",
     "camelcase": "error",
     "spaced-comment": "error",
+    "space-before-function-paren": [
+      "warn",
+      { "anonymous": "always", "named": "never", "asyncArrow": "always" }
+    ],
     "import/order": [
       "error",
       {
@@ -63,11 +71,17 @@
         "newlines-between": "always-and-inside-groups"
       }
     ],
+    "import/extensions": ["error", "ignorePackages", {
+      "js": "never",
+      "jsx": "never",
+      "ts": "never",
+      "tsx": "never"
+    }],
     "quotes": ["error", "single"],
     "jsx-quotes": ["error", "prefer-single"],
     "prefer-const": "error",
     "indent": ["warn", 2],
-    "max-len": ["error", { "code": 120, "ignoreUrls": true }],
+    "max-len": ["error", { "code": 150, "ignoreUrls": true }],
     "comma-dangle": ["error", "always-multiline"],
     "semi": ["error", "always"],
     "no-duplicate-imports": "error",

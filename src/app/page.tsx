@@ -1,9 +1,17 @@
 import React from 'react';
 
-import TemporaryPage from './views/TemporaryPage';
+import Header from './views/Header/Header';
+import Footer from './views/Footer/Footer';
+import Content from './views/Content/Content';
+
+import { LoadingProvider } from './components/Loader/LoadingProvider';
 
 export default function Home() {
   return (
-    <TemporaryPage />
+    <LoadingProvider>
+      <Header />
+      <Content />
+      <Footer />
+    </LoadingProvider>
   );
 }

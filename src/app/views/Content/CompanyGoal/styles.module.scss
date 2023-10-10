@@ -1,0 +1,79 @@
+@import '../../../style/mixins.module.scss';
+@import '../../../style/colors.module.scss';
+
+.wrapper {
+    width: 100%;
+    height: 806px;
+
+    .bgWrap {
+        position: absolute;
+        height: 806px;
+        width: 100%;
+        overflow: hidden;
+        z-index: -1;
+    
+        .background {
+            width: 100%;
+            height: 100vh;
+            object-fit: cover;
+        }
+    }
+
+    .block_content {
+        width: 100%;
+        height: 100%;
+        @include flex(flex, column, center, center);
+
+        .block_text {
+            width: 520px;
+        
+            h1 {
+                color: $color-yellow;
+                font-size: 48px;
+                line-height: normal;
+                font-weight: 400;
+                padding-bottom: 60px;
+                white-space: nowrap;
+            }
+            p {
+                color: $color-white;
+                font-size: 18px;
+                line-height: normal;
+                font-weight: 200;
+            }
+        }
+    }
+}
+
+@media (max-width: 460px) {
+    .wrapper {
+        .bgWrap { 
+            #background {
+                inset: initial !important;
+                right: 200px !important;
+                overflow: visible;
+            }
+        }
+    }
+}
+
+@media (max-width: 880px) {
+    .wrapper {
+        .block_content {
+            @include flex(flex, column, flex-start, center);
+            padding: 60px 10px 0px 10px;
+
+            .block_text {
+                width: 100%;
+                max-width: 580px;
+        
+                h1 {
+                    font-size: 32px;
+                }
+                p {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}

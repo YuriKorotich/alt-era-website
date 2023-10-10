@@ -1,0 +1,106 @@
+@import './mixins.module.scss';
+
+.container_display {
+  width: 100%;
+  height: 100vh;
+  // position: absolute;
+  // top: 0px;
+  // left: 0px;
+  padding: 20px 20px 20px 20px;
+  background: rgb(229, 231, 235);
+
+  .display {
+    width: 100%;
+    height: 100%;
+    @include flex(flex, row, space-around, center);
+  
+    .display__img {
+      flex-shrink: 1;
+
+      img {
+        width: 100%;
+        height: auto;
+        max-width: 660px;
+      }
+    }
+  
+    .display__content {
+      max-width: 740px;
+      height: 100%;
+      @include flex(flex, column, center, flex-start);
+      flex-shrink: 1.5;
+      margin-left: 50px;
+  
+      .display__content__info {
+        @include adaptiv-font(42, 32);
+        line-height: normal;
+      }
+
+      .display__content__text {
+        margin-top: 30px;
+        @include adaptiv-font(28, 24);
+        line-height: 42px;
+        font-weight: 200;
+      }
+
+      .error_btn {
+        margin-top: 5rem;
+        color: #fff;
+        background-color: #333333;
+        border: none;
+        outline: none;
+        padding: 16px;
+        border-radius: 10px;
+        font-size: 14px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all .3s;
+
+        @media (hover: hover) {
+          &:hover {
+            transform: scale(1.03);
+            background: #3d3a3a;
+          }
+          &:active{
+            background: #3d3a3a;
+            transform: scale(.98);
+          }
+        }
+        @media (hover: none) {
+          &:active{
+            background: #3d3a3a;
+            transform: scale(.98);
+          }
+        }
+      }
+      .error_footer {
+        font-weight: 700;
+        text-align: center;
+        margin-top: 60px;
+        font-size: 14px;
+        // @include adaptiv-font(16, 14);
+        line-height: normal;
+      }
+    }
+  }
+}
+@media (max-width: 880px) {
+    .container_display {
+    
+      .display {
+        @include flex(flex, column, center, center);
+
+        .display__content {
+          margin-left: 0px;
+          margin-top: 50px;
+
+          .display__content__text {
+            line-height: 30px;
+          }
+          .error_footer {
+            margin-top: 50px;
+          }
+      }
+    }
+  }
+}

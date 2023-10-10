@@ -1,25 +1,26 @@
 import React from 'react';
-import Head from 'next/head';
 
 import './globals.css';
 import localFont from 'next/font/local';
+
+import { AOSInit } from './aos';
 
 import type { Metadata } from 'next';
 
 const gothamPro = localFont({
   src: [
     {
-      path: './assets/fonts/GothamPro-Light.ttf',
+      path: '../../public/fonts/GothamPro-Light.ttf',
       weight: '200',
       style: 'normal',
     },
     {
-      path: './assets/fonts/GothamPro-Medium.ttf',
+      path: '../../public/fonts/GothamPro-Medium.ttf',
       weight: '400',
       style: 'normal',
     },
     {
-      path: './assets/fonts/GothamPro-Bold.ttf',
+      path: '../../public/fonts/GothamPro-Bold.ttf',
       weight: '700',
       style: 'normal',
     },
@@ -29,7 +30,70 @@ const gothamPro = localFont({
 
 export const metadata: Metadata = {
   title: 'Alt Era',
-  description: 'ALT-ERA is a company that deals with innovative energy, creating new alternative energy.',
+  description: '«ALT-ERA» — це компанія, що займається відновлюваною енергетикою, яка створює нову альтернативну енергію.',
+  metadataBase: new URL('https://alt-era.com'),
+  generator: 'Next.js',
+  applicationName: 'Alt Era',
+  referrer: 'origin-when-cross-origin',
+  keywords: [
+    'Зарядна станція',
+    'Акумулятор для інвертора',
+    'Сонячні батареї ціна',
+    'Кіловат година',
+    'Літій-залізофосфатний акумулятор',
+    'Інвертор',
+    'Графік відключення світла',
+    'Зарядная станция',
+    'Аккумулятор для инвертора',
+    'Солнечные батареи цена',
+    'Киловатый час',
+    'Литий-железо фосфатный аккумулятор',
+    'Инвертор',
+    'График отключения света',
+  ],
+  colorScheme: 'light',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: 'white' },
+    { media: '(prefers-color-scheme: dark)', color: 'black' },
+  ],
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  openGraph: {
+    title: 'Alt Era',
+    description: 'The React Framework for the Web',
+    url: 'https://alt-era.com',
+    siteName: 'Alt Era',
+    images: [
+      {
+        url: '../../public/logo.svg',
+        width: 280,
+        height: 56,
+      },
+    ],
+    locale: 'ua_UA',
+    type: 'website',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: false,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+  },
 };
 
 export default function RootLayout({
@@ -39,10 +103,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <Head>
-        <link rel='shortcut icon' href='../../public/favicon.ico' />
-      </Head>
-      <body className={gothamPro.variable}>{children}</body>
+      <AOSInit />
+      <body className={gothamPro.variable}>
+        {children}
+      </body>
     </html>
   );
 }

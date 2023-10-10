@@ -1,0 +1,134 @@
+@import '../../../style/mixins.module.scss';
+@import '../../../style/colors.module.scss';
+
+.wrapper {
+    width: 100%;
+    height: 826px;
+    padding: 100px 70px;
+    background: #F0F0F0;
+
+    .block_content {
+        height: 100%;
+        @include flex(flex, row, space-around, center);
+
+        .mobile_title {
+            display: none;
+            color: $color-yellow;
+            font-size: 48px;
+            line-height: normal;
+            font-weight: 400;
+            padding-bottom: 60px;
+        }
+
+        .block_image {
+            h1 {
+                color: $color-yellow;
+                font-size: 48px;
+                line-height: normal;
+                font-weight: 400;
+                padding-bottom: 60px;
+            }
+
+            .image_wrap {
+                object-fit: contain;
+                margin-right: 50px;
+            
+                .image {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+        .block_text {
+            width: 435px;
+            @include flex(flex, column, center, flex-start);
+    
+            h2 {
+                color: $color-gray;
+                font-size: 24px;
+                line-height: normal;
+                font-weight: 200;
+                text-transform: uppercase;
+                padding-bottom: 46px;
+            }
+
+            p {
+                color: $color-gray;
+                font-size: 20px;
+                line-height: normal;
+                font-weight: 200;
+                position: relative;
+
+                &::before {
+                    content: "\2022";
+                    width: 20px;   
+                    display: inline-block; 
+                    color: $color-yellow;
+                    position: absolute;
+                    left: -14px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 880px) {
+    .wrapper {
+        height: auto;
+        padding: 40px 0px;
+
+        .block_content {
+            @include flex(flex, column-reverse, flex-end, center);
+
+            .mobile_title {
+                display: block;
+                font-size: 32px;
+                padding-bottom: 30px;
+                text-align: center;
+            }
+
+            .block_image {
+                h1 {
+                    display: none;
+                    font-size: 32px;
+                    padding-bottom: 30px;
+                    text-align: center;
+                }
+    
+                .image_wrap {
+                    width: 100%;
+                    height: auto;
+                    max-width: 863px;
+                    margin-right: 0px;
+    
+                    .image {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
+
+            .block_text {
+                width: 100%;
+                max-width: 340px;
+                height: auto;
+                padding: 0px 20px 40px 20px;
+        
+                h2 {
+                    font-size: 18px;
+                    text-align: center;
+                    padding-bottom: 20px;
+                }
+
+                p {
+                    font-size: 16px;
+                    padding-left: 20px;
+
+                    &::before {
+                        left: 5px;
+                    }
+                }
+            }
+        }
+    }
+}
