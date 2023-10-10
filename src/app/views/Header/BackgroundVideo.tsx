@@ -1,10 +1,14 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-// import ReactPlayer from 'react-player/lazy';
+
+import Image from 'next/image';
+
 import dynamic from 'next/dynamic';
 
-// import Loader from '../../components/Loader/Loader'; , loading: () => <Loader />
+import imageBgMob from '../../../../public/images/header-Images/mobileVideoBackgroundImg.jpg';
+
+import imageBgPc from '../../../../public/images/header-Images/backgroundVideoImg.jpg';
 
 import styles from './styles.module.scss';
 
@@ -12,6 +16,7 @@ const ReactPlayer = dynamic(() => import('react-player/lazy'), { ssr: false });
 
 const BackgroundVideo = ({ screenWidthMobile }: { screenWidthMobile: boolean }) => {
   const [domLoaded, setDomLoaded] = useState<boolean>(false);
+  const [videoLoaded, setVideoLoaded] = useState<boolean>(false);
 
   const videoSourcePc = '/video/backgroundVideo.mp4';
   const mobileVideoBackground = '/video/mobileVideoBackground.mp4';
@@ -25,6 +30,16 @@ const BackgroundVideo = ({ screenWidthMobile }: { screenWidthMobile: boolean }) 
   return (
     domLoaded && (
       <div className={styles.player_wrapper}>
+        {!videoLoaded
+        && (
+          <Image
+            priority
+            quality={100}
+            src={screenWidthMobile ? imageBgMob : imageBgPc}
+            alt='Video Placeholder'
+            className={styles.placeholder}
+          />
+        )}
         <ReactPlayer
           loop
           muted
@@ -34,7 +49,8 @@ const BackgroundVideo = ({ screenWidthMobile }: { screenWidthMobile: boolean }) 
           height='100%'
           type='video/mp4'
           preload='metadata'
-          className={styles.react_player}
+          className={`${styles.react_player} ${!videoLoaded ? styles.videoLoaded : ''}`}
+          onReady={() => setVideoLoaded(true)}
         />
       </div>
     )

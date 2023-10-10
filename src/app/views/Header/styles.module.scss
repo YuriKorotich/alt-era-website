@@ -10,7 +10,23 @@
     overflow: hidden;
     z-index: -1;
 
+    .placeholder {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
+
+    .react_player.videoLoaded {
+      opacity: 1;
+    }
+    
     .react_player {
+      opacity: 0;
+      transition: opacity 0.5s ease;
 
         video {
             width: 100%;

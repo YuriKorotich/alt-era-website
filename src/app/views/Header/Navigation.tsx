@@ -43,16 +43,10 @@ const navLinks: Array<TypeNavLink> = [
     link: 'section_Footer',
   },
 ];
-interface ChildComponentProps {
-  updateStateScreenWidth: (value: boolean) => void;
-  updateStateScreenWidthMobile: (value: boolean) => void;
-}
 
-const Navigation = ({ updateStateScreenWidth, updateStateScreenWidthMobile }: ChildComponentProps) => {
+const Navigation = ({ isMobile }: { isMobile: boolean }) => {
   const [activeClass, setActiveClass] = useState<boolean>(false);
   const [blockScroll, allowScroll] = useScrollBlock();
-  const maxWidthScrenn = 880;
-  const maxWidthScrennMobile = 380;
 
   useEffect((): void => {
     window.scrollTo(0, 0);
@@ -62,26 +56,11 @@ const Navigation = ({ updateStateScreenWidth, updateStateScreenWidthMobile }: Ch
     } else {
       allowScroll();
     }
-  }, [activeClass]);
+  }, [activeClass, allowScroll, blockScroll]);
 
-  useEffect(() => {
-    const handleResize = (event: Event): void => {
-      const width = event.target as Window;
-      if (width?.innerWidth > maxWidthScrenn) {
-        setActiveClass(false);
-        updateStateScreenWidth(false);
-      } else {
-        updateStateScreenWidth(true);
-      }
-      if (width?.innerWidth > maxWidthScrennMobile) {
-        updateStateScreenWidthMobile(false);
-      } else {
-        updateStateScreenWidthMobile(true);
-      }
-    };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  useEffect((): void => {
+    setActiveClass(false);
+  }, [isMobile]);
 
   return (
     <Fragment>

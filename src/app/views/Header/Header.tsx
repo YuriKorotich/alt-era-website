@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+
 import Image from 'next/image';
-import dynamic from 'next/dynamic';
 
 import Logo from '../../../../public/logo.svg';
 
@@ -10,18 +10,38 @@ import styles from './styles.module.scss';
 
 import Navigation from './Navigation';
 
-const BackgroundVideo = dynamic(() => import('./BackgroundVideo'), { ssr: false });
+import BackgroundVideo from './BackgroundVideo';
 
 const Header = () => {
-  const [screenWidth, setScreenWidth] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
   const [screenWidthMobile, setScreenWidthMobile] = useState<boolean>(false);
 
-  const updateStateScreenWidth = (value: boolean): void => {
-    setScreenWidth(value);
-  };
-  const updateStateScreenWidthMobile = (value: boolean): void => {
-    setScreenWidthMobile(value);
-  };
+  const maxWidthScreen = 880;
+  const maxWidthScreenMobile = 380;
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(`(max-width: ${maxWidthScreen}px)`);
+    const mobileQuery = window.matchMedia(`(max-width: ${maxWidthScreenMobile}px)`);
+
+    const handleScreenWidthChange = (event: MediaQueryListEvent) => {
+      setIsMobile(event.matches);
+    };
+
+    const handleScreenWidthMobileChange = (event: MediaQueryListEvent) => {
+      setScreenWidthMobile(event.matches);
+    };
+
+    setIsMobile(mediaQuery.matches);
+    setScreenWidthMobile(mobileQuery.matches);
+
+    mediaQuery.addEventListener('change', handleScreenWidthChange);
+    mobileQuery.addEventListener('change', handleScreenWidthMobileChange);
+
+    return () => {
+      mediaQuery.removeEventListener('change', handleScreenWidthChange);
+      mobileQuery.removeEventListener('change', handleScreenWidthMobileChange);
+    };
+  }, []);
 
   return (
     <header>
@@ -39,7 +59,7 @@ const Header = () => {
               draggable={false}
             />
           </div>
-          <Navigation updateStateScreenWidth={updateStateScreenWidth} updateStateScreenWidthMobile={updateStateScreenWidthMobile} />
+          <Navigation isMobile={isMobile} />
         </div>
         <div className={styles.block_title}>
           <h1 className={styles.title}>
@@ -48,7 +68,7 @@ const Header = () => {
           </h1>
         </div>
         <div className={styles.block_btn}>
-          <button className={styles.btn} type='button'>{screenWidth ? 'Розрахувати вартість' : 'Розрахувати вартість в моєму регіоні'}</button>
+          <button className={styles.btn} type='button'>{isMobile ? 'Розрахувати вартість' : 'Розрахувати вартість в моєму регіоні'}</button>
         </div>
       </div>
     </header>
