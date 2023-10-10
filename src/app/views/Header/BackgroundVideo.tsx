@@ -45,13 +45,23 @@ const BackgroundVideo = ({ screenWidthMobile }: { screenWidthMobile: boolean }) 
           muted
           playing
           playsInline
+          controls={false}
           url={screenWidthMobile ? mobileVideoBackground : videoSourcePc}
           width='100%'
           height='100%'
           type='video/mp4'
           preload='metadata'
-          className={`${styles.react_player} ${!videoLoaded ? styles.videoLoaded : ''}`}
           onReady={() => setVideoLoaded(true)}
+          className={`${styles.react_player} ${!videoLoaded ? styles.videoLoaded : ''}`}
+          config={{
+            file: {
+              attributes: {
+                autoPlay: true,
+                muted: true,
+                playsInline: true,
+              },
+            },
+          }}
         />
       </div>
     )
