@@ -44,6 +44,7 @@ const BackgroundVideo = ({ screenWidthMobile }: { screenWidthMobile: boolean }) 
           loop
           muted
           playing
+          playsInline
           url={screenWidthMobile ? mobileVideoBackground : videoSourcePc}
           width='100%'
           height='100%'
