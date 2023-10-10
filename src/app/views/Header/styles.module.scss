@@ -242,7 +242,7 @@
         .mobile_nav_unit {
           height: 100%;
           @include flex(flex, column, center, center);
-          // padding-right: 90px;
+          padding-top: 50px;
 
             a {
               @include flex(flex, row, center, center);

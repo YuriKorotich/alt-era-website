@@ -49,9 +49,9 @@
     .wrapper {
         .bgWrap { 
             #background {
-                inset: initial !important;
+                inset: auto !important;
                 right: 200px !important;
-                overflow: visible;
+                overflow: visible !important;
             }
         }
     }
