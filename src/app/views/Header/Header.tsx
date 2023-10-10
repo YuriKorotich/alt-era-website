@@ -33,7 +33,6 @@ const Header = () => {
               priority
               src={Logo}
               width={280}
-              height={56}
               quality={100}
               alt='website log'
               className={styles.logo}

@@ -40,7 +40,7 @@ const AltEraFacts = () => {
               електроенергію
             </p>
           </div>
-          <div className={styles.content} data-aos={animation} data-aos-delay='800'>
+          <div className={styles.content} data-aos={animation} data-aos-delay='600'>
             <h1 className={styles.content_title}>2-3 дні</h1>
             <p className={styles.content_description}>на встановлення</p>
           </div>

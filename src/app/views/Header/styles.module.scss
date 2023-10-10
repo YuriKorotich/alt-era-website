@@ -54,9 +54,8 @@
     
         .logo {
           width: 280px;
-          height: 56px;
+          height: auto;
           min-width: 280px;
-          min-height: 56px;
       }
     }
 
@@ -113,7 +112,7 @@
     .title {
         font-size: 40px;
         line-height: normal;
-        font-weight: 700;
+        font-weight: 400;
         color: $color-white;
         text-transform: uppercase;
   
@@ -192,9 +191,8 @@
     
               .logo {
                   width: 160px;
-                  height: 32px;
+                  height: auto;
                   min-width: 160px;
-                  min-height: 32px;
                   position: relative;
                   top: 20px;
             }

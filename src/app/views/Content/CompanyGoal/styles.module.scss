@@ -45,18 +45,6 @@
     }
 }
 
-@media (max-width: 460px) {
-    .wrapper {
-        .bgWrap { 
-            #background {
-                inset: auto !important;
-                right: 200px !important;
-                overflow: visible !important;
-            }
-        }
-    }
-}
-
 @media (max-width: 880px) {
     .wrapper {
         .block_content {
