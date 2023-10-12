@@ -34,10 +34,6 @@
     flex-shrink: 1;
 
     h1 {
-        color: $color-yellow;
-        font-size: 48px;
-        line-height: normal;
-        font-weight: 400;
         padding-bottom: 30px;
     }
 }
@@ -53,21 +49,6 @@
                 font-weight: 200;
                 position: relative;
                 margin-bottom: 15px;
-
-                .indent {
-                    left: -28px;
-                }
-
-                span {
-                    display: inline-block; 
-                    position: absolute;
-                    top: 0px;
-                    left: -35px;
-                    width: 20px;   
-                    color: $color-gray;
-                    text-align: right;
-                }
-
             }
             ul {
                 list-style: none;;
@@ -75,9 +56,6 @@
                 
                 li {
                     color: $color-gray;
-                    font-size: 18px;
-                    line-height: 22px;
-                    font-weight: 200;
                     position: relative;
 
                 &::before {
@@ -110,7 +88,6 @@
         padding: 0px 20px 40px 35px;
 
         h1 {
-            font-size: 32px;
             padding-bottom: 20px;
         }
     }
@@ -119,21 +96,13 @@
     
         div {
                 h2 {
-                    font-size: 20px;
+                    font-size: 16px;
                     margin-bottom: 10px;
-    
-                    .indent {
-                        left: -25px;
-                    }
-                    span {
-                        left: -25px;
-                    }
-    
                 }
                 ul {
                     li {
-                        font-size: 16px;
-
+                        padding-bottom: 10px;
+                        
                         &::before {
                             font-size: 10px;
                             left: -10px;

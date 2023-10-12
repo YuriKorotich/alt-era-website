@@ -13,10 +13,16 @@ const InfoAboutHead = () => (
           <h1>
             “Ми продаємо не панелі та інвертори, ми продаємо рішення, що дають свободу і впевненість у завтрашньому дні.”
           </h1>
-          <p>
-            Зазвонний Євген
+          <p className='description_p'>
+            <span>Зазвонний Євген</span>
             <br />
-            Засновник, провідний фахівець з альтернативної енергетики
+            Засновник,
+            {' '}
+            <br />
+            <span className={styles.decText}>провідний фахівець</span>
+            <br />
+            {' '}
+            <span>з альтернативної енергетики</span>
           </p>
         </div>
         <div className={styles.image_wrap} data-aos='zoom-in-up'>
@@ -24,7 +30,6 @@ const InfoAboutHead = () => (
             priority
             quality={100}
             width={425}
-            height={552}
             src={image}
             alt='image'
             placeholder='blur'

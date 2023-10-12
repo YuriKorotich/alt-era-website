@@ -31,8 +31,8 @@ const CompanyGoal = () => (
       </div>
       <div className={styles.block_content} data-aos='fade-up'>
         <div className={styles.block_text}>
-          <h1>Мета компанії</h1>
-          <p>
+          <h1 className='title_h1'>Мета компанії</h1>
+          <p className='description_p'>
             У століття інновацій та діджиталізації електроенергія стала життєвою необхідністю.
             {' '}
             Багато хто стикається з проблемою великих витрат на електроенергію та нестабільністю поставок.

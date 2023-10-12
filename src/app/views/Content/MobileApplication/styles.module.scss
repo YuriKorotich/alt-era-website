@@ -22,10 +22,6 @@
 
         .block_image {
             h1 {
-                color: $color-yellow;
-                font-size: 48px;
-                line-height: normal;
-                font-weight: 400;
                 padding-bottom: 60px;
             }
 
@@ -53,10 +49,6 @@
             }
 
             p {
-                color: $color-gray;
-                font-size: 20px;
-                line-height: normal;
-                font-weight: 200;
                 position: relative;
 
                 &::before {
@@ -90,7 +82,6 @@
             .block_image {
                 h1 {
                     display: none;
-                    font-size: 32px;
                     padding-bottom: 30px;
                     text-align: center;
                 }
@@ -115,13 +106,12 @@
                 padding: 0px 20px 40px 20px;
         
                 h2 {
-                    font-size: 18px;
+                    font-size: 16px;
                     text-align: center;
                     padding-bottom: 20px;
                 }
 
                 p {
-                    font-size: 16px;
                     padding-left: 20px;
 
                     &::before {

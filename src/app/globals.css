@@ -29,3 +29,80 @@ body {
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
 }
+
+.container_loader {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100vh;
+  background: #000;
+  z-index: 999999;
+
+}
+.loader {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  max-width: 14.6rem;
+}
+.loader:before,
+.loader:after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  animation-duration: 1.8s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  filter: drop-shadow(0 0 0.7555555556rem rgba(255, 255, 255, 0.75));
+}
+.loader:after {
+  width: calc(100% - 1.7rem*2);
+  padding-bottom: calc(100% - 1.7rem*2);
+  box-shadow: 0 0 0 0 #FFF;
+  animation-name: pulsB;
+}
+@keyframes pulsB {
+  0%, 50% { box-shadow: 0 0 0 0 #FFF; opacity: 0; }
+  100% { box-shadow: 0 0 0 1.7rem #FFF; opacity: 1; }
+}
+.loader:before {
+  width: 100%;
+  padding-bottom: 100%;
+  box-shadow: inset 0 0 0 1.7rem #FFF;
+  animation-name: pulsA;
+}
+@keyframes pulsA {
+  0% { box-shadow: inset 0 0 0 1.7rem #FFF; opacity: 1; }
+  50%, 100% { box-shadow: inset 0 0 0 0 #FFF; opacity: 0; }
+}
+.title_h1 {
+    color: #FFC100;
+    font-size: 48px;
+    line-height: normal;
+    font-weight: 400;
+}
+
+.description_p {
+  color: #454545;
+  font-size: 16px;
+  font-weight: 200;
+  line-height: normal;
+}
+
+@media (max-width: 880px) { 
+  .title_h1 {
+    font-size: 30px;
+  }
+  .description_p {
+    font-size: 12px;
+  }
+}

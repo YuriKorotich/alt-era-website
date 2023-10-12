@@ -13,10 +13,6 @@
         @include flex(flex, row, center, center);
 
         p {
-            color: $color-gray2;
-            font-size: 18px;
-            font-weight: 200;
-            line-height: 22px;
             padding-right: 40px;
             white-space: nowrap;
         }
@@ -44,6 +40,7 @@
                 @include flex(flex, row, space-between, center);
         
                 .image {
+                    width: 42px;
                     margin-right: 0px;
                 }
             }

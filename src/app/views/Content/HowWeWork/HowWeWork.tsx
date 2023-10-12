@@ -23,56 +23,40 @@ const HowWeWork = () => (
           />
         </div>
         <div className={styles.block_text}>
-          <h1>Як ми працюємо</h1>
+          <h1 className='title_h1'>Як ми працюємо</h1>
           <div className={styles.list}>
             <div>
-              <h2>
-                <span className={styles.indent}>1.</span>
-                Консультація
-              </h2>
+              <h2>Консультація</h2>
               <ul>
-                <li>Енергоаудит</li>
-                <li>Заміри</li>
+                <li className='description_p'>Енергоаудит</li>
+                <li className='description_p'>Заміри</li>
               </ul>
             </div>
             <div>
-              <h2>
-                <span>2.</span>
-                Виїзд на об’єкт
-              </h2>
+              <h2>Виїзд на об’єкт</h2>
               <ul>
-                <li>Аналіз технічного завдання</li>
-                <li>Орієнтовний розрахунок</li>
+                <li className='description_p'>Аналіз технічного завдання</li>
+                <li className='description_p'>Орієнтовний розрахунок</li>
               </ul>
             </div>
             <div>
-              <h2>
-                <span>3.</span>
-                Розробка індивідуального інженерного проекту
-              </h2>
+              <h2>Розробка індивідуального інженерного проекту</h2>
             </div>
             <div>
               <h2>
-                <span>4.</span>
                 Підписання договор
               </h2>
             </div>
             <div>
-              <h2>
-                <span>5.</span>
-                Встановлення та запуск СЕС
-              </h2>
+              <h2>Встановлення та запуск СЕС</h2>
               <ul>
-                <li>Налаштування онлайн мониторингу</li>
+                <li className='description_p'>Налаштування онлайн моніторинг</li>
               </ul>
             </div>
             <div>
-              <h2>
-                <span>6.</span>
-                Технічна підтримка
-              </h2>
+              <h2>Технічна підтримка</h2>
               <ul>
-                <li>Виконання гарантійних обов&apos;язків</li>
+                <li className='description_p'>Виконання гарантійних обов&apos;язків</li>
               </ul>
             </div>
           </div>

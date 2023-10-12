@@ -61,7 +61,7 @@ const BackgroundVideo = ({ screenWidthMobile }: { screenWidthMobile: boolean }) 
           type='video/mp4'
           preload='metadata'
           onReady={() => setVideoLoaded(true)}
-          className={`${styles.react_player} ${!screenWidthMobile || videoLoaded ? styles.videoLoaded : ''}`}
+          className={`${styles.react_player} ${styles.videoLoaded}`}
           config={{
             file: {
               attributes: {

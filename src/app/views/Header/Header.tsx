@@ -62,8 +62,9 @@ const Header = () => {
           <Navigation isMobile={isMobile} />
         </div>
         <div className={styles.block_title}>
-          <h1 className={styles.title}>
+          <h1 className={`title_h1 ${styles.title}`}>
             Заряджай свою
+            <br />
             <span> незалежність</span>
           </h1>
         </div>

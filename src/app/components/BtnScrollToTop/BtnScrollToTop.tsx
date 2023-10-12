@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 
-import image from '../../../../public/images/content-images/up-arrow.png';
+import image from '../../../../public/images/content-images/up-arrow.svg';
 
 import styles from './styles.module.scss';
 

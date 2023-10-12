@@ -40,18 +40,10 @@
                 position: absolute;
                 bottom: 350px;
                 left: 0px;
-                color: $color-yellow;
-                font-size: 48px;
-                line-height: normal;
-                font-weight: 400;
                 white-space: nowrap;
             }
         
             .content_title {
-                color: $color-yellow;
-                font-size: 48px;
-                font-weight: 400;
-                line-height: normal;
                 margin-bottom: 16px;
             }
         
@@ -93,17 +85,15 @@
                 margin: 0px 0px 40px 0px;
         
                 .title {
-                    font-size: 32px;
                     bottom: 300px;
                 }
             
                 .content_title {
-                    font-size: 32px;
                     margin-bottom: 10px;
                 }
             
                 .content_description {
-                    font-size: 20px;
+                    font-size: 16px;
                 }
             }
         }

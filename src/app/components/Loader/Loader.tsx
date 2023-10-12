@@ -1,11 +1,19 @@
+'use client';
+
 import React from 'react';
 
-import styles from './styles.module.scss';
+import { useLoading } from './LoadingContext';
 
-const Loader = () => (
-  <div className={styles.container_loader}>
-    <div className={styles.loader} />
-  </div>
-);
+const Loader = () => {
+  const { loading } = useLoading();
+
+  if (loading === false) return null;
+
+  return (
+    <div className='container_loader'>
+      <div className='loader' />
+    </div>
+  );
+};
 
 export default Loader;

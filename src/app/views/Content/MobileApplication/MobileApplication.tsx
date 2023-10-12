@@ -10,7 +10,7 @@ const MobileApplication = () => (
     <div className={styles.wrapper}>
       <div className={styles.block_content}>
         <div className={styles.block_image}>
-          <h1>Мобільний додаток</h1>
+          <h1 className='title_h1'>Мобільний додаток</h1>
           <div className={styles.image_wrap}>
             <Image
               priority
@@ -27,10 +27,10 @@ const MobileApplication = () => (
         <div className={styles.block_text}>
           <div>
             <h2>ви завжди можете отримати інформацію про:</h2>
-            <p>статистика генерації потужності</p>
-            <p>споживання елетроенергії</p>
-            <p>заряд батареї</p>
-            <p>мониторинг стану online 24/7</p>
+            <p className='description_p'>статистика генерації потужності</p>
+            <p className='description_p'>споживання елетроенергії</p>
+            <p className='description_p'>заряд батареї</p>
+            <p className='description_p'>моніторинг стану online 24/7</p>
           </div>
         </div>
         <h1 className={styles.mobile_title}>Мобільний додаток</h1>

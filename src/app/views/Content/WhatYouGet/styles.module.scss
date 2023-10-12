@@ -30,18 +30,11 @@
             @include flex(flex, column, center, flex-start);
     
             h1 {
-                color: $color-yellow;
-                font-size: 48px;
-                line-height: normal;
-                font-weight: 400;
                 padding-bottom: 60px;
  
             }
             p {
                 color: $color-white;
-                font-size: 18px;
-                line-height: normal;
-                font-weight: 200;
             }
         }
         .block_list {
@@ -71,9 +64,6 @@
                 }
                 p {
                     color: $color-white;
-                    font-size: 18px;
-                    line-height: normal;
-                    font-weight: 200;
                 }
             }
         }
@@ -83,10 +73,10 @@
 @media (max-width: 880px) {
 
     .wrapper {
-        height: 1400px;
+        height: 900px;
 
         .bgWrap {
-            height: 1400px;
+            height: 900px;
         }
         .block_content {
             padding: 50px 20px;
@@ -97,11 +87,7 @@
                 padding: 0px 0px 60px 20px;
 
                 h1 {
-                    font-size: 32px;
                     padding-bottom: 20px;
-                }
-                p {
-                    font-size: 16px;
                 }
             }
             .block_list {
@@ -109,9 +95,6 @@
                 .section_list {
 
                     h2 {
-                        font-size: 20px;
-                    }
-                    p {
                         font-size: 16px;
                     }
                 }

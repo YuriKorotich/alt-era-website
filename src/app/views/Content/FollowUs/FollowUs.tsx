@@ -27,7 +27,7 @@ const FollowUs = () => (
   <section>
     <div className={styles.wrapper}>
       <div className={styles.block_content}>
-        <p>Слідкуйте за нами:</p>
+        <p className='description_p'>Слідкуйте за нами:</p>
         <div className={styles.image_wrap}>
           {
             contactIcont.map(({ icon, link }) => (

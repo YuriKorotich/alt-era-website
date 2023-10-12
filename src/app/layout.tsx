@@ -5,6 +5,10 @@ import localFont from 'next/font/local';
 
 import { AOSInit } from './aos';
 
+import { LoadingProvider } from './components/Loader/LoadingContext';
+
+import Loader from './components/Loader/Loader';
+
 import type { Metadata } from 'next';
 
 const gothamPro = localFont({
@@ -104,8 +108,11 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <AOSInit />
-      <body className={gothamPro.variable}>
-        {children}
+      <body className={gothamPro.variable} style={{ overflow: 'hidden' }}>
+        <LoadingProvider>
+          <Loader />
+          {children}
+        </LoadingProvider>
       </body>
     </html>
   );

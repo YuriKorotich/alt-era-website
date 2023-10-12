@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Image from 'next/image';
 
 import background from '../../../../public/images/footer-Images/footer-bg.jpg';
@@ -15,7 +15,8 @@ const contactDetails: Array<TypeContact> = [
     icon: location,
   },
   {
-    text: '0677903040 (Viber, Telegram)',
+    text: '0677903040',
+    textDesign: '(Viber, Telegram)',
     icon: phone,
   },
   {
@@ -26,6 +27,7 @@ const contactDetails: Array<TypeContact> = [
 
     type TypeContact = {
       text: string,
+      textDesign?: string,
       icon: string,
     };
 
@@ -44,7 +46,7 @@ const Footer = () => (
         />
       </div>
       <div className={styles.block_contacts}>
-        <h1 className={styles.title_mobile}>Контакти</h1>
+        <h1 className={`title_h1 ${styles.title_mobile}`}>Контакти</h1>
         <div className={styles.image_wrap}>
           <Image
             priority
@@ -58,10 +60,10 @@ const Footer = () => (
           />
         </div>
         <div className={styles.contacts}>
-          <h1 className={styles.title}>Контакти</h1>
+          <h1 className={`title_h1 ${styles.title}`}>Контакти</h1>
           <ul>
             {
-              contactDetails.map(({ text, icon }) => (
+              contactDetails.map(({ text, icon, textDesign }) => (
                 <li key={text + icon}>
                   <Image
                     key={icon + text}
@@ -72,7 +74,12 @@ const Footer = () => (
                     draggable={false}
                     alt='contact icons'
                   />
-                  {text}
+                  {textDesign ? (
+                    <>
+                      {text}
+                      <span>{textDesign}</span>
+                    </>
+                  ) : text}
                 </li>
               ))
             }
