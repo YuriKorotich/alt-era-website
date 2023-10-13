@@ -19,6 +19,11 @@ const gothamPro = localFont({
       style: 'normal',
     },
     {
+      path: '../../public/fonts/GothamPro-Regular.ttf',
+      weight: '300',
+      style: 'normal',
+    },
+    {
       path: '../../public/fonts/GothamPro-Medium.ttf',
       weight: '400',
       style: 'normal',

@@ -56,15 +56,13 @@
                 
                 li {
                     color: $color-gray;
-                    position: relative;
 
                 &::before {
                     content: "\2022";
                     font-size: 12px;
                     color: $color-gray;
                     display: inline-block;
-                    position: absolute;
-                    left: -15px;
+                    padding-right: 8px;
                 }
             }
         }
@@ -85,10 +83,10 @@
         width: 100%;
         max-width: 580px;
         height: auto;
-        padding: 0px 20px 40px 35px;
+        padding: 0px 34px 40px 34px;
 
         h1 {
-            padding-bottom: 20px;
+            padding-bottom: 40px;
         }
     }
     .list {

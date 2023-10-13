@@ -15,14 +15,10 @@ const InfoAboutHead = () => (
           </h1>
           <p className='description_p'>
             <span>Зазвонний Євген</span>
-            <br />
-            Засновник,
+            засновник,
             {' '}
             <br />
-            <span className={styles.decText}>провідний фахівець</span>
-            <br />
-            {' '}
-            <span>з альтернативної енергетики</span>
+            <span>провідний фахівець з альтернативної енергетики</span>
           </p>
         </div>
         <div className={styles.image_wrap} data-aos='zoom-in-up'>

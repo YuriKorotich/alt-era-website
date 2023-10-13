@@ -93,7 +93,7 @@ body {
 
 .description_p {
   color: #454545;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 200;
   line-height: normal;
 }
@@ -103,6 +103,6 @@ body {
     font-size: 30px;
   }
   .description_p {
-    font-size: 12px;
+    font-size: 14px;
   }
 }

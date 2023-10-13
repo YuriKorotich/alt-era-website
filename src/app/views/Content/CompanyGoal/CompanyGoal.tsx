@@ -8,7 +8,7 @@ import styles from './styles.module.scss';
 
 const CompanyGoal = () => (
   <section>
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} id='section_Company_Goal'>
       <div className={styles.bgWrap}>
         <Image
           fill

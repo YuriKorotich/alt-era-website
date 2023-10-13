@@ -29,11 +29,11 @@ const AltEraFacts = () => {
         <div className={styles.block_content}>
           <div className={styles.content} data-aos={animation}>
             <h1 className={`title_h1 ${styles.title}`}>Alt-Era факти</h1>
-            <h1 className={`title_h1 ${styles.content_title}`}>3-4 роки</h1>
+            <h1 className={styles.content_title}>3-4 роки</h1>
             <p className={styles.content_description}>термін окупності</p>
           </div>
           <div className={styles.content} data-aos={animation} data-aos-delay='400'>
-            <h1 className={`title_h1 ${styles.content_title}`}>75%</h1>
+            <h1 className={styles.content_title}>75%</h1>
             <p className={styles.content_description}>
               Економії
               <br />
@@ -43,7 +43,7 @@ const AltEraFacts = () => {
             </p>
           </div>
           <div className={styles.content} data-aos={animation} data-aos-delay='600'>
-            <h1 className={`title_h1 ${styles.content_title}`}>2-3 дні</h1>
+            <h1 className={styles.content_title}>2-3 дні</h1>
             <p className={styles.content_description}>на встановлення</p>
           </div>
         </div>

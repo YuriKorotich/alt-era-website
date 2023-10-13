@@ -103,7 +103,7 @@
       a {
           color: $color-white;
           font-size: 18px;
-          font-weight: 400;
+          font-weight: 300;
           line-height: normal;
           margin-right: 20px;
           cursor: pointer;
@@ -135,6 +135,7 @@
         span {
             font-weight: 200;
             color: $color-yellow;
+            letter-spacing: 10px;
         }
     }
   }
@@ -149,6 +150,7 @@
         transition: all .3s;
         cursor: pointer;
         font-size: 16px;
+        font-weight: 300;
         border-radius: 5px;
         padding: 20px 32px;
         align-items: center;
@@ -223,6 +225,10 @@
         
           .title {
                   font-size: 30px;
+
+                  span {
+                    letter-spacing: 0px;
+                  }
               }
           }
 
@@ -269,7 +275,7 @@
               @include flex(flex, row, center, center);
               height: 60px;
               font-size: 18px;
-              font-weight: 400;
+              font-weight: 300;
               line-height: normal;
               margin-bottom: 18px;
               color: $color-white;

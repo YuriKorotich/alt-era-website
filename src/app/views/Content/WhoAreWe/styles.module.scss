@@ -38,7 +38,7 @@
 
     .wrapper {
         height: auto;
-        padding: 40px 0px;
+        padding: 40px 30px;
 
         .block_content {
             @include flex(flex, column, flex-end, center);
@@ -59,7 +59,7 @@
                 width: 100%;
                 max-width: 580px;
                 height: auto;
-                padding: 0px 20px 40px 20px;
+                padding: 0px 30px 40px 30px;
         
                 h1 {
                     padding-bottom: 20px;

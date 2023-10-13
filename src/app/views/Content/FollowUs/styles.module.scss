@@ -33,6 +33,7 @@
 
 @media (max-width: 880px) {
     .wrapper {
+        height: 180px;
         .block_content {
             @include flex(flex, column, center, center);
             .image_wrap {
