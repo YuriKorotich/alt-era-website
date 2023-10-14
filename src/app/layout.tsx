@@ -117,6 +117,7 @@ export default function RootLayout({
         <LoadingProvider>
           <Loader />
           {children}
+          <div id='modal-root' />
         </LoadingProvider>
       </body>
     </html>

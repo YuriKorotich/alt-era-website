@@ -6,6 +6,10 @@ import Image from 'next/image';
 
 import Logo from '../../../../public/logo.svg';
 
+import ModalWindow from '../../components/ModalWindow/ModalWindow';
+
+import FeedbackForm from '../FeedbackForm/FeedbackForm';
+
 import styles from './styles.module.scss';
 
 import Navigation from './Navigation';
@@ -15,9 +19,18 @@ import BackgroundVideo from './BackgroundVideo';
 const Header = () => {
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const [screenWidthMobile, setScreenWidthMobile] = useState<boolean>(false);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const maxWidthScreen = 880;
   const maxWidthScreenMobile = 380;
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
 
   useEffect(() => {
     const mediaQuery = window.matchMedia(`(max-width: ${maxWidthScreen}px)`);
@@ -69,9 +82,12 @@ const Header = () => {
           </h1>
         </div>
         <div className={styles.block_btn}>
-          <button className={styles.btn} type='button'>{isMobile ? 'Розрахувати вартість' : 'Розрахувати вартість в моєму регіоні'}</button>
+          <button className={styles.btn} type='button' onClick={handleOpenModal}>
+            {isMobile ? 'Розрахувати вартість' : 'Розрахувати вартість в моєму регіоні'}
+          </button>
         </div>
       </div>
+      <ModalWindow isOpen={isModalOpen} onClose={handleCloseModal}><FeedbackForm /></ModalWindow>
     </header>
   );
 };

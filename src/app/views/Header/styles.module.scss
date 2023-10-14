@@ -235,6 +235,7 @@
         .block_btn {
           .btn {
             font-size: 14px;
+            padding: 16px 32px;
           }
         }
       }
@@ -268,8 +269,8 @@
 
         .mobile_nav_unit {
           height: 100%;
-          @include flex(flex, column, center, center);
-          padding-top: 50px;
+          @include flex(flex, column, center, flex-start);
+          padding: 0px 0px 0px 50px;
 
             a {
               @include flex(flex, row, center, center);

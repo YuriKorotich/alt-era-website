@@ -1,0 +1,139 @@
+@import '../../style/mixins.module.scss';
+@import '../../style/colors.module.scss';
+
+.wrapper_contact_form {
+    @include flex(flex, column, flex-start, center);
+    width: 100%;
+    margin-top: 90px;
+    padding: 40px;
+
+    .block_contact_form {
+        @include flex(flex, column, flex-start, stretch);
+        max-width: 1440px;
+
+        .title_contact_form {
+            color: $color-gray;
+            font-size: 32px;
+            font-weight: 400;
+            line-height: normal;
+            margin-bottom: 58px
+        }
+
+        .contact_form  {
+            font-size: 16px;
+            margin-bottom: 58px;
+        }
+
+        .submitting_form {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 22px;
+            padding: 20px 32px;
+            color: $color-white;
+            background: $color-gray;
+        }
+
+        .wrapper_btn {
+            width: 100%;
+            margin-bottom: 58px;
+        
+            .title_btn {
+                color: $color-gray;
+                font-size: 20px;
+                font-weight: 400;
+                line-height: normal;
+                margin-bottom: 40px;
+            }
+        
+            .button_row {
+            @include flex(flex, row, space-between, center);
+        
+                .button_contact {
+                    font-size: 16px;
+                    font-weight: 400;
+                    line-height: normal;
+                    margin-right: 20px;
+                    color: $color-gray;
+                    border: 1px solid $color-gray;
+
+                    &:last-of-type {
+                        margin-right: 0px
+                    }
+                }
+                .button_contact.active {
+                    color: $color-white;
+                    background: $color-gray;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .wrapper_contact_form {
+        padding: 40px 10px;
+
+        .block_contact_form {
+
+            .title_contact_form {
+                font-size: 18px;
+                margin-bottom: 30px;
+            }
+
+            .contact_form  {
+                @include flex(flex, column, flex-start, stretch);
+                margin-bottom: 30px;
+            }
+
+            .submitting_form {
+                font-size: 16px;
+                padding: 14px 24px;
+            }
+
+            .wrapper_btn {
+                margin-bottom: 30px;
+
+                .title_btn {
+                    font-size: 18px;
+                }
+            
+                .button_row {
+            
+                    .button_contact {
+                        font-size: 14px;
+                        margin-right: 5px;
+
+                        &:last-of-type {
+                            margin-right: 0px
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 320px) {
+    .wrapper_contact_form {
+        .block_contact_form {
+            .wrapper_btn {
+                .button_row {
+                    .button_contact {
+                        font-size: 12px;
+                        padding: 6px 8px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 220px) {
+    .wrapper_contact_form {
+        .block_contact_form {
+            .wrapper_btn {
+                flex-wrap: wrap;
+            }
+        }
+    }
+}

@@ -49,15 +49,11 @@
             }
 
             p {
-                position: relative;
-
                 &::before {
                     content: "\2022";
                     width: 20px;   
                     display: inline-block; 
                     color: $color-yellow;
-                    position: absolute;
-                    left: -14px;
                 }
             }
         }

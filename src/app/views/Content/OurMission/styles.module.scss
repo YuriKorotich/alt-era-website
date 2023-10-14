@@ -24,7 +24,8 @@
         }
 
         .block_text {
-            width: 520px;
+            width: 400px;
+            max-width: 520px;
             @include flex(flex, column, center, flex-start);
         
             h1 {

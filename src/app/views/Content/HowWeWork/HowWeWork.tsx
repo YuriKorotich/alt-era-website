@@ -28,15 +28,15 @@ const HowWeWork = () => (
             <div>
               <h2>Консультація</h2>
               <ul>
-                <li className='description_p'>Енергоаудит</li>
-                <li className='description_p'>Заміри</li>
+                <li className='description_p'>Аналіз технічного завдання</li>
+                <li className='description_p'>Орієнтовний розрахунок</li>
               </ul>
             </div>
             <div>
               <h2>Виїзд на об’єкт</h2>
               <ul>
-                <li className='description_p'>Аналіз технічного завдання</li>
-                <li className='description_p'>Орієнтовний розрахунок</li>
+                <li className='description_p'>Енергоаудит</li>
+                <li className='description_p'>Заміри</li>
               </ul>
             </div>
             <div>
@@ -44,13 +44,13 @@ const HowWeWork = () => (
             </div>
             <div>
               <h2>
-                Підписання договор
+                Підписання договору
               </h2>
             </div>
             <div>
               <h2>Встановлення та запуск СЕС</h2>
               <ul>
-                <li className='description_p'>Налаштування онлайн моніторинг</li>
+                <li className='description_p'>Налаштування онлайн моніторингу</li>
               </ul>
             </div>
             <div>
