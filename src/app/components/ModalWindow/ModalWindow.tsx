@@ -18,7 +18,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
 
   const updateModalHeight = useCallback(() => {
     const viewportHeight = window.innerHeight;
-    const browserBottomStripHeight = viewportHeight - document.documentElement.clientHeight;
+    const browserBottomStripHeight = window.visualViewport ? viewportHeight - window.visualViewport.height : 0;
     setModalHeight(viewportHeight - browserBottomStripHeight);
   }, []);
 
