@@ -294,6 +294,10 @@
       z-index: 101;
       cursor: pointer;
 
+      &:focus {
+        outline: none;
+      }
+
       .sidebar_toggler {
         width: 1.8rem;
         height: 1.3rem;

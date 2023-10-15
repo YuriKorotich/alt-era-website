@@ -71,6 +71,7 @@
 
 @media (max-width: 480px) {
     .wrapper_contact_form {
+        margin-top: 60px;
         padding: 40px 10px;
 
         .block_contact_form {
@@ -120,19 +121,9 @@
                 .button_row {
                     .button_contact {
                         font-size: 12px;
-                        padding: 6px 8px;
+                        padding: 6px;
                     }
                 }
-            }
-        }
-    }
-}
-
-@media (max-width: 220px) {
-    .wrapper_contact_form {
-        .block_contact_form {
-            .wrapper_btn {
-                flex-wrap: wrap;
             }
         }
     }

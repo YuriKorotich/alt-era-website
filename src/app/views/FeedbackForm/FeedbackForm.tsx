@@ -133,7 +133,7 @@ const FeedbackForm: React.FC = () => {
             </div>
           </div>
           <Button className={styles.submitting_form} variant='contained' type='submit'>
-            Submit
+            Розрахувати
           </Button>
         </div>
       </div>
