@@ -12,7 +12,7 @@
   z-index: 10000;
   background: $color-yellow;
   animation: fade-enter 0.2s ease-in both;
-  overflow: overlay;
+  overflow: auto;
 
   @keyframes fade-enter {
     from {
