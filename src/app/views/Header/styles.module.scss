@@ -201,6 +201,7 @@
 
       .conten_wrapper {
         padding: 40px 30px 0px 30px;
+        position: relative;
 
         .head_line { 
           @include flex(flex, row, space-between, flex-end);
@@ -222,7 +223,8 @@
           }
         } 
         .block_title {
-        
+          height: 80%;
+
           .title {
                   font-size: 30px;
 
@@ -233,6 +235,10 @@
           }
 
         .block_btn {
+          position: absolute;
+          bottom: 140px;
+          margin-bottom: 0px;
+
           .btn {
             font-size: 14px;
             padding: 16px 32px;

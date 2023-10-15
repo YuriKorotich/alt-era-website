@@ -10,6 +10,11 @@ import * as yup from 'yup';
 
 import styles from './styles.module.scss';
 
+type TypeSubmitForm = {
+  onSubmitSuccess: () => void;
+  onSubmitError: () => void;
+};
+
 const validationSchema = yup.object({
   electricityFeedback: yup
     .string()
@@ -25,7 +30,7 @@ const validationSchema = yup.object({
     .required('Необхідно вказати імʼя'),
 });
 
-const FeedbackForm: React.FC = () => {
+const FeedbackForm: React.FC<TypeSubmitForm> = ({ onSubmitSuccess, onSubmitError }: TypeSubmitForm) => {
   const [activeButton, setActiveButton] = useState<string>('');
 
   const formik = useFormik({
@@ -37,6 +42,11 @@ const FeedbackForm: React.FC = () => {
     validationSchema,
     onSubmit: (values) => {
       alert(JSON.stringify({ ...values, contactMethod: activeButton }, null, 2));
+      try {
+        onSubmitSuccess();
+      } catch (error) {
+        onSubmitError();
+      }
     },
   });
 

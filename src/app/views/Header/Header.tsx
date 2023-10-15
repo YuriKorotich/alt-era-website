@@ -4,32 +4,48 @@ import React, { useState, useEffect } from 'react';
 
 import Image from 'next/image';
 
-import Logo from '../../../../public/logo.svg';
+import Alert from '../../components/Alert/Alert';
+
+import useAlert from '../../components/Alert/useAlert';
 
 import ModalWindow from '../../components/ModalWindow/ModalWindow';
 
 import FeedbackForm from '../FeedbackForm/FeedbackForm';
 
-import styles from './styles.module.scss';
+import Logo from '../../../../public/logo.svg';
+
+import BackgroundVideo from './BackgroundVideo';
 
 import Navigation from './Navigation';
 
-import BackgroundVideo from './BackgroundVideo';
+import styles from './styles.module.scss';
 
 const Header = () => {
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const [screenWidthMobile, setScreenWidthMobile] = useState<boolean>(false);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const {
+    showAlert, alertType, alertMessage, showAlertWithMessage, hideAlert,
+  } = useAlert();
 
   const maxWidthScreen = 880;
   const maxWidthScreenMobile = 380;
 
-  const handleOpenModal = () => {
+  const handleOpenModal = (): void => {
     setIsModalOpen(true);
   };
 
-  const handleCloseModal = () => {
+  const handleCloseModal = (): void => {
     setIsModalOpen(false);
+  };
+
+  const handleSubmitSuccess = (): void => {
+    handleCloseModal();
+    showAlertWithMessage('success', 'Форма успішно надіслана!');
+  };
+
+  const handleSubmitError = (): void => {
+    showAlertWithMessage('error', 'Не вдалося надіслати форму. Будь ласка спробуйте ще раз.');
   };
 
   useEffect(() => {
@@ -87,7 +103,12 @@ const Header = () => {
           </button>
         </div>
       </div>
-      <ModalWindow isOpen={isModalOpen} onClose={handleCloseModal}><FeedbackForm /></ModalWindow>
+      <ModalWindow isOpen={isModalOpen} onClose={handleCloseModal}>
+        <FeedbackForm onSubmitSuccess={handleSubmitSuccess} onSubmitError={handleSubmitError} />
+      </ModalWindow>
+      <Alert open={showAlert} onClose={hideAlert} severity={alertType} duration={5000} position='top'>
+        {alertMessage}
+      </Alert>
     </header>
   );
 };
