@@ -14,12 +14,12 @@ type ModalProps = {
 };
 
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
-  const [modalHeight, setModalHeight] = useState(0);
+  const [modalHeight, setModalHeight] = useState<string>('auto');
 
   const updateModalHeight = () => {
     const viewportHeight = window.innerHeight;
     const browserBottomStripHeight = viewportHeight - document.documentElement.clientHeight;
-    setModalHeight(viewportHeight - browserBottomStripHeight);
+    setModalHeight(`calc(100vh - ${browserBottomStripHeight}px)`);
   };
 
   const modalRoot = typeof document !== 'undefined' ? document.getElementById('modal-root') : null; // for SSR
@@ -44,7 +44,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
   if (!isOpen || !modalRoot) return null;
 
   return ReactDOM.createPortal(
-    <div className={styles.modalOverlay} style={{ maxHeight: `${modalHeight}px` }}>
+    <div className={styles.modalOverlay} style={{ maxHeight: modalHeight }}>
       <button type='button' onClick={onClose} className={styles.closeButton}>
         <span />
         <span />
