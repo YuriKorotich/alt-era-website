@@ -6,9 +6,9 @@ import Image from 'next/image';
 
 import dynamic from 'next/dynamic';
 
-import imageBgMob from '../../../../public/images/header-Images/mobileVideoBackgroundImg.jpg';
+import imageBgMob from '../../../../public/images/header-Images/mobileVideoBackgroundImg.png';
 
-import imageBgPc from '../../../../public/images/header-Images/backgroundVideoImg.jpg';
+import imageBgPc from '../../../../public/images/header-Images/backgroundVideoImg.png';
 
 import styles from './styles.module.scss';
 

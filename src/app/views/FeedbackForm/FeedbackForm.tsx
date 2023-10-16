@@ -4,7 +4,11 @@ import TextField from '@mui/material/TextField';
 
 import Button from '@mui/material/Button';
 
+import CircularProgress from '@mui/material/CircularProgress';
+
 import { useFormik } from 'formik';
+
+import emailjs from 'emailjs-com';
 
 import * as yup from 'yup';
 
@@ -14,6 +18,12 @@ type TypeSubmitForm = {
   onSubmitSuccess: () => void;
   onSubmitError: () => void;
 };
+
+const {
+  NEXT_PUBLIC_EMAILJS_SERVICE_ID = '',
+  NEXT_PUBLIC_EMAILJS_TEMPLATE_ID = '',
+  NEXT_PUBLIC_EMAILJS_USER_ID = '',
+} = process.env;
 
 const validationSchema = yup.object({
   electricityFeedback: yup
@@ -32,6 +42,7 @@ const validationSchema = yup.object({
 
 const FeedbackForm: React.FC<TypeSubmitForm> = ({ onSubmitSuccess, onSubmitError }: TypeSubmitForm) => {
   const [activeButton, setActiveButton] = useState<string>('');
+  const [showProgressBar, setShowProgressBar] = useState<boolean>(false);
 
   const formik = useFormik({
     initialValues: {
@@ -40,12 +51,29 @@ const FeedbackForm: React.FC<TypeSubmitForm> = ({ onSubmitSuccess, onSubmitError
       name: '',
     },
     validationSchema,
-    onSubmit: (values) => {
-      alert(JSON.stringify({ ...values, contactMethod: activeButton }, null, 2));
+    onSubmit: async (values) => {
+      setShowProgressBar(true);
       try {
+        const messageParams = {
+          name: values.name,
+          message: values.electricityFeedback,
+          phone: values.phoneNumber,
+          contactMethod: activeButton,
+        };
+        if (!NEXT_PUBLIC_EMAILJS_SERVICE_ID || !NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || !NEXT_PUBLIC_EMAILJS_USER_ID) {
+          throw new Error('Missing EmailJS configurations');
+        }
+        await emailjs.send(
+          NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+          NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+          messageParams,
+          NEXT_PUBLIC_EMAILJS_USER_ID,
+        );
         onSubmitSuccess();
       } catch (error) {
         onSubmitError();
+      } finally {
+        setShowProgressBar(false);
       }
     },
   });
@@ -143,7 +171,7 @@ const FeedbackForm: React.FC<TypeSubmitForm> = ({ onSubmitSuccess, onSubmitError
             </div>
           </div>
           <Button className={styles.submitting_form} variant='contained' type='submit'>
-            Розрахувати
+            {showProgressBar ? <CircularProgress color='primary' size={36} thickness={5} /> : 'Розрахувати'}
           </Button>
         </div>
       </div>
