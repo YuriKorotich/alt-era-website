@@ -71,6 +71,7 @@ const FeedbackForm: React.FC<TypeSubmitForm> = ({ onSubmitSuccess, onSubmitError
         );
         onSubmitSuccess();
       } catch (error) {
+        console.log('Error sending email:', error);
         onSubmitError();
       } finally {
         setShowProgressBar(false);
