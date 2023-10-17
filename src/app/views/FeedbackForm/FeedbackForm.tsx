@@ -19,12 +19,6 @@ type TypeSubmitForm = {
   onSubmitError: () => void;
 };
 
-const {
-  NEXT_PUBLIC_EMAILJS_SERVICE_ID = '',
-  NEXT_PUBLIC_EMAILJS_TEMPLATE_ID = '',
-  NEXT_PUBLIC_EMAILJS_USER_ID = '',
-} = process.env;
-
 const validationSchema = yup.object({
   electricityFeedback: yup
     .string()
@@ -60,14 +54,17 @@ const FeedbackForm: React.FC<TypeSubmitForm> = ({ onSubmitSuccess, onSubmitError
           phone: values.phoneNumber,
           contactMethod: activeButton,
         };
-        // if (!NEXT_PUBLIC_EMAILJS_SERVICE_ID || !NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || !NEXT_PUBLIC_EMAILJS_USER_ID) {
-        //   throw new Error('Missing EmailJS configurations');
-        // }
+        if (
+          !process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID
+          || !process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
+          || !process.env.NEXT_PUBLIC_EMAILJS_USER_ID) {
+          throw new Error('Missing EmailJS configurations');
+        }
         await emailjs.send(
-          NEXT_PUBLIC_EMAILJS_SERVICE_ID,
-          NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+          process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+          process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
           messageParams,
-          NEXT_PUBLIC_EMAILJS_USER_ID,
+          process.env.NEXT_PUBLIC_EMAILJS_USER_ID,
         );
         onSubmitSuccess();
       } catch (error) {
