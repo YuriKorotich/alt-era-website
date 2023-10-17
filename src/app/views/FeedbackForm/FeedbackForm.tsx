@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, {
+  useState, useEffect, useCallback, ChangeEvent,
+} from 'react';
 
 import TextField from '@mui/material/TextField';
 
@@ -76,11 +78,25 @@ const FeedbackForm: React.FC<TypeSubmitForm> = ({ onSubmitSuccess, onSubmitError
     },
   });
 
-  const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleKeyDown = useCallback((event: KeyboardEvent): void => {
+    if (event.key === 'Enter' && event.keyCode === 13 && formik.isValid) {
+      event.preventDefault();
+      formik.handleSubmit();
+    }
+  }, [formik]);
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [handleKeyDown]);
+
+  const handleNameChange = (event: ChangeEvent<HTMLInputElement>): void => {
     const value = event.target.value.replace(/[^A-Za-zА-Яа-яЁёҐґІіЇї\s]/g, '');
     formik.setFieldValue('name', value);
   };
-  const handlePhoneNumberChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handlePhoneNumberChange = (event: ChangeEvent<HTMLInputElement>): void => {
     const value = event.target.value.replace(/[^0-9+]/g, '');
     formik.setFieldValue('phoneNumber', value);
   };

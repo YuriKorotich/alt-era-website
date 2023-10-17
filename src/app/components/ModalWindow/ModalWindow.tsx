@@ -16,7 +16,7 @@ type ModalProps = {
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
   const [modalHeight, setModalHeight] = useState<number>(0);
 
-  const updateModalHeight = useCallback(() => {
+  const updateModalHeight = useCallback((): void => {
     const viewportHeight = window.innerHeight;
     const browserBottomStripHeight = window.visualViewport ? viewportHeight - window.visualViewport.height : 0;
     setModalHeight(viewportHeight - browserBottomStripHeight);
@@ -40,6 +40,19 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
       window.removeEventListener('resize', updateModalHeight);
     };
   }, [updateModalHeight]);
+
+  const handleKeyDown = useCallback((event: KeyboardEvent): void => {
+    if (event.key === 'Escape' && isOpen) onClose();
+  }, [isOpen, onClose]);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.addEventListener('keydown', handleKeyDown);
+    }
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [handleKeyDown, isOpen]);
 
   if (!isOpen || !modalRoot) return null;
 
