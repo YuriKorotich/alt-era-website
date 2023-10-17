@@ -15,8 +15,8 @@ const MobileApplication = () => (
             <Image
               priority
               quality={100}
-              width={470}
-              height={480}
+              width={420}
+              height={428}
               src={image}
               alt='image'
               draggable={false}
