@@ -3,9 +3,6 @@
 .container_display {
   width: 100%;
   height: 100vh;
-  // position: absolute;
-  // top: 0px;
-  // left: 0px;
   padding: 20px 20px 20px 20px;
   background: rgb(229, 231, 235);
 
@@ -78,7 +75,6 @@
         text-align: center;
         margin-top: 60px;
         font-size: 14px;
-        // @include adaptiv-font(16, 14);
         line-height: normal;
       }
     }

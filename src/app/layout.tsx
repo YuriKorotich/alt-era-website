@@ -8,7 +8,7 @@ import { Analytics } from '@vercel/analytics/react';
 
 import { AOSInit } from './aos';
 
-import { LoadingProvider } from './components/Loader/LoadingContext';
+import { LoadingProvider } from './components/Loader/LoadingProvider';
 
 import Loader from './components/Loader/Loader';
 

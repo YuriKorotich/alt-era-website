@@ -8,10 +8,8 @@
     "start": "next start",
     "export": "next build",
     "lint": "next lint",
-    "lint2": "eslint src/**/*.{js,jsx,ts,tsx,json}",
-    "lint:fix2": "eslint --fix src/**/*.{js,jsx,ts,tsx,json}",
-    "lint3": "eslint -c .eslintrc --ext .js,.jsx,.ts,.tsx,.json  .",
-    "lint:fix3": "eslint run lint -- --fix"
+    "lint_es": "eslint src/**/*.{js,jsx,ts,tsx,json}",
+    "lint:fix_es": "eslint --fix src/**/*.{js,jsx,ts,tsx,json}"
   },
   "dependencies": {
     "@mui/material": "^5.14.13",

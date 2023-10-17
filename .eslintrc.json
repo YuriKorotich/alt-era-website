@@ -30,22 +30,11 @@
   "rules": {
     "no-use-before-define": "off",
     "react/jsx-fragments": "off",
-    // "import/no-unresolved": "off",
     "react/react-in-jsx-scope": "off",
     "react/no-unused-prop-types": "off",
     "react/require-default-props": "off",
     "import/prefer-default-export": "off",
     "import/no-extraneous-dependencies": "off",
-  //   "import/no-extraneous-dependencies": [
-  //     "error", {
-  //        "devDependencies": false, 
-  //        "optionalDependencies": false, 
-  //        "peerDependencies": false, 
-  //        "usePackageJson": true,
-  //        "packageDir": "./"
-  //     }
-  // ],
-    // "no-trailing-whitespace": [true, "ignore-jsdoc"],
     "linebreak-style": 0,
     "no-unused-vars": "warn",
     "no-console": "warn",

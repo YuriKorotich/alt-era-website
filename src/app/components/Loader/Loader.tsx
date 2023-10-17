@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import { useLoading } from './LoadingContext';
+import { useLoading } from './LoadingProvider';
 
 const Loader = () => {
   const { loading } = useLoading();
