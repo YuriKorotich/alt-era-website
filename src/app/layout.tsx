@@ -1,7 +1,10 @@
 import React from 'react';
 
 import './globals.css';
+
 import localFont from 'next/font/local';
+
+import { Analytics } from '@vercel/analytics/react';
 
 import { AOSInit } from './aos';
 
@@ -118,6 +121,7 @@ export default function RootLayout({
           <Loader />
           {children}
           <div id='modal-root' />
+          <Analytics />
         </LoadingProvider>
       </body>
     </html>
