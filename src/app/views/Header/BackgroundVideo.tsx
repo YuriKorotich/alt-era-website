@@ -6,10 +6,6 @@ import Image from 'next/image';
 
 import dynamic from 'next/dynamic';
 
-import imageBgMob from '../../../../public/images/header-Images/mobileVideoBackgroundImg.png';
-
-import imageBgPc from '../../../../public/images/header-Images/backgroundVideoImg.png';
-
 import styles from './styles.module.scss';
 
 import type { ReactPlayerProps } from 'react-player/lazy';
@@ -19,7 +15,8 @@ const ReactPlayer = dynamic(() => import('react-player/lazy'), { ssr: false });
 const BackgroundVideo = ({ screenWidthMobile }: { screenWidthMobile: boolean }) => {
   const [domLoaded, setDomLoaded] = useState<boolean>(false);
   const [videoLoaded, setVideoLoaded] = useState<boolean>(false);
-  const [viderSrc, setViderSrcd] = useState<string>('');
+  const [videoSrc, setVideoSrc] = useState<string>('');
+  const [imageSrc, setImageSrc] = useState<string>('');
   const playerRef = useRef<ReactPlayerProps>(null);
 
   useEffect(() => {
@@ -36,9 +33,11 @@ const BackgroundVideo = ({ screenWidthMobile }: { screenWidthMobile: boolean }) 
 
   useEffect(() => {
     if (screenWidthMobile) {
-      setViderSrcd('/video/mobileVideoBackground.mp4');
+      setImageSrc('/images/placeholderImgMobile.png');
+      setVideoSrc('/video/mobileVideoBackground.mp4');
     } else {
-      setViderSrcd('/video/backgroundVideo.mp4');
+      setImageSrc('/images/placeholderImgPc.png');
+      setVideoSrc('/video/backgroundVideo.mp4');
     }
   }, [screenWidthMobile]);
 
@@ -48,9 +47,10 @@ const BackgroundVideo = ({ screenWidthMobile }: { screenWidthMobile: boolean }) 
         {!videoLoaded
         && (
           <Image
+            fill
             priority
             quality={100}
-            src={screenWidthMobile ? imageBgMob : imageBgPc}
+            src={imageSrc}
             alt='Video Placeholder'
             className={styles.placeholder}
           />
@@ -61,7 +61,7 @@ const BackgroundVideo = ({ screenWidthMobile }: { screenWidthMobile: boolean }) 
           playing
           playsInline
           controls={false}
-          url={viderSrc}
+          url={videoSrc}
           width='100%'
           height='100%'
           type='video/mp4'

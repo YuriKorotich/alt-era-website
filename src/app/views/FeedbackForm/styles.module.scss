@@ -1,6 +1,12 @@
 @import '../../style/mixins.module.scss';
 @import '../../style/colors.module.scss';
 
+form {
+    width: 100%;
+    height: 100%;
+    @include flex(flex, column, center, center);
+}
+
 .wrapper_contact_form {
     @include flex(flex, column, flex-start, center);
     width: 100%;
