@@ -13,7 +13,7 @@ type ModalProps = {
   children?: React.ReactNode;
 };
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }): React.ReactPortal | null => {
+const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
   const [modalHeight, setModalHeight] = useState<number>(window.innerHeight);
 
   const updateModalHeight = useCallback((): void => {
