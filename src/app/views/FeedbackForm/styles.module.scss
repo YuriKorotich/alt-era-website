@@ -1,7 +1,7 @@
 @import '../../style/mixins.module.scss';
 @import '../../style/colors.module.scss';
 
-form {
+.form {
     width: 100%;
     height: 100%;
     @include flex(flex, column, center, center);

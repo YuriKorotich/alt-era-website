@@ -101,7 +101,7 @@ const FeedbackForm: React.FC<TypeSubmitForm> = ({ onSubmitSuccess, onSubmitError
   };
 
   return (
-    <form onSubmit={formik.handleSubmit}>
+    <form onSubmit={formik.handleSubmit} className={styles.form}>
       <div className={styles.wrapper_contact_form}>
         <div className={styles.block_contact_form}>
           <h1 className={styles.title_contact_form}>Розрахувати вартість в моєму регіоні</h1>
