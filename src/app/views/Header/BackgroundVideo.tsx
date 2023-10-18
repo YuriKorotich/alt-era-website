@@ -19,11 +19,8 @@ const ReactPlayer = dynamic(() => import('react-player/lazy'), { ssr: false });
 const BackgroundVideo = ({ screenWidthMobile }: { screenWidthMobile: boolean }) => {
   const [domLoaded, setDomLoaded] = useState<boolean>(false);
   const [videoLoaded, setVideoLoaded] = useState<boolean>(false);
-  const [viderSrc, setViderSrcd] = useState<string>('');
+  const [viderSrc, setViderSrcd] = useState<string>('/video/backgroundVideo.mp4');
   const playerRef = useRef<ReactPlayerProps>(null);
-
-  // const videoSourcePc = '/video/backgroundVideo.mp4';
-  // const mobileVideoBackground = '/video/mobileVideoBackground.mp4';
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
