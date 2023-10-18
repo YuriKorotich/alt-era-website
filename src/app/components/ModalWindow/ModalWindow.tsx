@@ -14,14 +14,12 @@ type ModalProps = {
 };
 
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
-  const [modalHeight, setModalHeight] = useState<number>(window.innerHeight);
+  const [modalHeight, setModalHeight] = useState<number>(0);
 
   const updateModalHeight = useCallback((): void => {
-    if (window.visualViewport) {
-      setModalHeight(window.visualViewport.height);
-    } else {
-      setModalHeight(window.innerHeight);
-    }
+    const viewportHeight = window.innerHeight;
+    const browserBottomStripHeight = window.visualViewport ? viewportHeight - window.visualViewport.height : 0;
+    setModalHeight(viewportHeight - browserBottomStripHeight);
   }, []);
 
   const modalRoot = typeof document !== 'undefined' ? document.getElementById('modal-root') : null; // for SSR
@@ -30,13 +28,13 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
   useEffect((): void => {
     if (isOpen) {
       blockScroll();
+      updateModalHeight();
     } else {
       allowScroll();
     }
-  }, [allowScroll, blockScroll, isOpen]);
+  }, [allowScroll, blockScroll, isOpen, updateModalHeight]);
 
   useEffect(() => {
-    updateModalHeight();
     window.addEventListener('resize', updateModalHeight);
     return () => {
       window.removeEventListener('resize', updateModalHeight);
