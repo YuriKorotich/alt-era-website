@@ -19,10 +19,11 @@ const ReactPlayer = dynamic(() => import('react-player/lazy'), { ssr: false });
 const BackgroundVideo = ({ screenWidthMobile }: { screenWidthMobile: boolean }) => {
   const [domLoaded, setDomLoaded] = useState<boolean>(false);
   const [videoLoaded, setVideoLoaded] = useState<boolean>(false);
+  const [viderSrc, setViderSrcd] = useState<string>('');
   const playerRef = useRef<ReactPlayerProps>(null);
 
-  const videoSourcePc = '/video/backgroundVideo.mp4';
-  const mobileVideoBackground = '/video/mobileVideoBackground.mp4';
+  // const videoSourcePc = '/video/backgroundVideo.mp4';
+  // const mobileVideoBackground = '/video/mobileVideoBackground.mp4';
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -35,6 +36,14 @@ const BackgroundVideo = ({ screenWidthMobile }: { screenWidthMobile: boolean }) 
       playerRef.current.getInternalPlayer().play();
     }
   }, [domLoaded]);
+
+  useEffect(() => {
+    if (screenWidthMobile) {
+      setViderSrcd('/video/mobileVideoBackground.mp4');
+    } else {
+      setViderSrcd('/video/backgroundVideo.mp4');
+    }
+  }, [screenWidthMobile]);
 
   return (
     domLoaded && (
@@ -55,7 +64,7 @@ const BackgroundVideo = ({ screenWidthMobile }: { screenWidthMobile: boolean }) 
           playing
           playsInline
           controls={false}
-          url={screenWidthMobile ? mobileVideoBackground : videoSourcePc}
+          url={viderSrc}
           width='100%'
           height='100%'
           type='video/mp4'

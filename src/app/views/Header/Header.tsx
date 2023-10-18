@@ -29,7 +29,7 @@ const Header = () => {
   } = useAlert();
 
   const maxWidthScreen = 880;
-  const maxWidthScreenMobile = 380;
+  const maxWidthScreenMobile = 480;
 
   const handleOpenModal = (): void => {
     setIsModalOpen(true);
