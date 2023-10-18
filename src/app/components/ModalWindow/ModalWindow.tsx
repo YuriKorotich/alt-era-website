@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import ReactDOM from 'react-dom';
 
 import { useScrollBlock } from '../../utils/useScrollBlock';
@@ -13,14 +13,14 @@ type ModalProps = {
   children?: React.ReactNode;
 };
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
-  const [modalHeight, setModalHeight] = useState<number>(0);
+const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }): React.ReactPortal | null => {
+  // const [modalHeight, setModalHeight] = useState<number>(0);
 
-  const updateModalHeight = useCallback((): void => {
-    const viewportHeight = window.innerHeight;
-    const browserBottomStripHeight = window.visualViewport ? viewportHeight - window.visualViewport.height : 0;
-    setModalHeight(viewportHeight - browserBottomStripHeight);
-  }, []);
+  // const updateModalHeight = useCallback((): void => {
+  //   const viewportHeight = window.innerHeight;
+  //   const browserBottomStripHeight = window.visualViewport ? viewportHeight - window.visualViewport.height : 0;
+  //   setModalHeight(viewportHeight - browserBottomStripHeight);
+  // }, []);
 
   const modalRoot = typeof document !== 'undefined' ? document.getElementById('modal-root') : null; // for SSR
   const [blockScroll, allowScroll] = useScrollBlock();
@@ -28,18 +28,18 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
   useEffect((): void => {
     if (isOpen) {
       blockScroll();
-      updateModalHeight();
+      // updateModalHeight();
     } else {
       allowScroll();
     }
-  }, [allowScroll, blockScroll, isOpen, updateModalHeight]);
+  }, [allowScroll, blockScroll, isOpen]);
 
-  useEffect(() => {
-    window.addEventListener('resize', updateModalHeight);
-    return () => {
-      window.removeEventListener('resize', updateModalHeight);
-    };
-  }, [updateModalHeight]);
+  // useEffect(() => {
+  //   window.addEventListener('resize', updateModalHeight);
+  //   return () => {
+  //     window.removeEventListener('resize', updateModalHeight);
+  //   };
+  // }, [updateModalHeight]);
 
   const handleKeyDown = useCallback((event: KeyboardEvent): void => {
     if (event.key === 'Escape' && isOpen) onClose();
@@ -57,7 +57,8 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
   if (!isOpen || !modalRoot) return null;
 
   return ReactDOM.createPortal(
-    <div className={styles.modalOverlay} style={{ maxHeight: `${modalHeight}px` }}>
+    // <div className={styles.modalOverlay} style={{ maxHeight: `${modalHeight}px` }}>
+    <div className={styles.modalOverlay}>
       <button type='button' onClick={onClose} className={styles.closeButton}>
         <span />
         <span />
