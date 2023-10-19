@@ -8,7 +8,7 @@ import Alert from '../../components/Alert/Alert';
 
 import useAlert from '../../components/Alert/useAlert';
 
-import ModalWindow from '../../components/ModalWindow/ModalWindow';
+import ModalWindow from '../../components/ModalWindow/ModalWindow2';
 
 import FeedbackForm from '../FeedbackForm/FeedbackForm';
 
