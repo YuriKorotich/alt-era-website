@@ -6,7 +6,7 @@ import React, { useEffect } from 'react';
 
 import Image from 'next/image';
 
-import image from '../../public/error_img.png';
+import imageError from '../../public/error_img.png';
 
 import styles from './style/error.module.scss';
 
@@ -26,18 +26,18 @@ export default function Error({
   return (
     <div className={styles.container_display}>
       <div className={styles.display}>
-        <div className={styles.display__img}>
+        <div className={styles.display_img}>
           <Image
             width={660}
-            src={image}
+            src={imageError}
             alt='404-Scarecrow'
             placeholder='blur'
             draggable={false}
           />
         </div>
-        <div className={styles.display__content}>
-          <h2 className={styles.display__content__info}>У мене для вас погані новини</h2>
-          <p className={styles.display__content__text}>
+        <div className={styles.display_content}>
+          <h2 className={styles.display_content_info}>У мене для вас погані новини</h2>
+          <p className={styles.display_content_text}>
             Несподівана помилка, яку ви отримали вже виправляється і найближчим часом буде усунена, зайдіть трохи пізніше.
           </p>
           <button type='button' className={styles.error_btn} onClick={handleRefreshPage}>Перезавантажити сторінку</button>

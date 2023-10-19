@@ -1,5 +1,3 @@
-@import '../../style/colors.module.scss';
-
 .top_to_btm{
     position: relative;
 
@@ -15,7 +13,6 @@
       border-radius: 50%;
       height: 50px;
       width: 50px;
-      color: $color-white;
       cursor: pointer;
       animation: movebtn 3s ease-in-out infinite;
       transition: all .5s ease-in-out;

@@ -14,32 +14,22 @@ type ModalProps = {
 };
 
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }): React.ReactPortal | null => {
-  // const [modalHeight, setModalHeight] = useState<number>(0);
-
-  // const updateModalHeight = useCallback((): void => {
-  //   const viewportHeight = window.innerHeight;
-  //   const browserBottomStripHeight = window.visualViewport ? viewportHeight - window.visualViewport.height : 0;
-  //   setModalHeight(viewportHeight - browserBottomStripHeight);
-  // }, []);
-
   const modalRoot = typeof document !== 'undefined' ? document.getElementById('modal-root') : null; // for SSR
   const [blockScroll, allowScroll] = useScrollBlock();
+
+  const updateVhProperty = () => {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  };
 
   useEffect((): void => {
     if (isOpen) {
       blockScroll();
-      // updateModalHeight();
+      updateVhProperty();
     } else {
       allowScroll();
     }
   }, [allowScroll, blockScroll, isOpen]);
-
-  // useEffect(() => {
-  //   window.addEventListener('resize', updateModalHeight);
-  //   return () => {
-  //     window.removeEventListener('resize', updateModalHeight);
-  //   };
-  // }, [updateModalHeight]);
 
   const handleKeyDown = useCallback((event: KeyboardEvent): void => {
     if (event.key === 'Escape' && isOpen) onClose();
@@ -57,7 +47,6 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }): React.React
   if (!isOpen || !modalRoot) return null;
 
   return ReactDOM.createPortal(
-    // <div className={styles.modalOverlay} style={{ maxHeight: `${modalHeight}px` }}>
     <div className={styles.modalOverlay}>
       <button type='button' onClick={onClose} className={styles.closeButton}>
         <span />

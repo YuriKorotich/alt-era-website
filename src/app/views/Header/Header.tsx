@@ -91,17 +91,21 @@ const Header = () => {
           </div>
           <Navigation isMobile={isMobile} />
         </div>
-        <div className={styles.block_title}>
-          <h1 className={styles.title}>
-            Заряджай свою
-            <br />
-            <span> незалежність</span>
-          </h1>
-        </div>
-        <div className={styles.block_btn}>
-          <button className={styles.btn} type='button' onClick={handleOpenModal}>
-            {isMobile ? 'Розрахувати вартість' : 'Розрахувати вартість в моєму регіоні'}
-          </button>
+        <div className={styles.box_center}>
+          <div className={styles.box_center_content}>
+            <div className={styles.block_title}>
+              <h1 className={styles.title}>
+                Заряджай свою
+                <br />
+                <span> незалежність</span>
+              </h1>
+            </div>
+            <div className={styles.block_btn}>
+              <button className={styles.btn} type='button' onClick={handleOpenModal}>
+                {isMobile ? 'Розрахувати вартість' : 'Розрахувати вартість в моєму регіоні'}
+              </button>
+            </div>
+          </div>
         </div>
       </div>
       <ModalWindow isOpen={isModalOpen} onClose={handleCloseModal}>
