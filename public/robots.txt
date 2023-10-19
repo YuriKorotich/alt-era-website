@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /private
+Crawl-delay: 300
+
+User-agent: SpecificBot
+Allow: /public
+Disallow: /private
+Crawl-delay: 300
+
+Sitemap: https://alt-era.com/sitemap.xml
+Host: https://alt-era.com

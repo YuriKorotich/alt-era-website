@@ -2,18 +2,7 @@
 const path = require('path');
 
 const nextConfig = {
-  async rewrites() {
-    return [
-      {
-        source: '/robots.txt',
-        destination: '/src/app/robots.txt',
-      },
-      {
-        source: '/sitemap.xml',
-        destination: '/src/app/sitemap.xml',
-      },
-    ];
-  },
+  output: 'export',
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
   },
