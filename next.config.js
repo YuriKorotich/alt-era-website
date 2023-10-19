@@ -7,11 +7,11 @@ const nextConfig = {
     return [
       {
         source: '/robots.txt',
-        destination: '/api/robots.txt',
+        destination: '/src/app/robots.txt',
       },
       {
         source: '/sitemap.xml',
-        destination: '/api/sitemap.xml',
+        destination: '/src/app/sitemap.xml',
       },
     ];
   },
