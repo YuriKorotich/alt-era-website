@@ -23,7 +23,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }): React.React
   }, []);
 
   useLayoutEffect(() => {
-    if (!isOpen && !modalRoot) {
+    if (isOpen && modalRoot) {
       setVH();
     }
 
