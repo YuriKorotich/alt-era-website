@@ -292,11 +292,10 @@
 
             a {
               @include flex(flex, row, center, center);
-              height: 60px;
+              height: 80px;
               font-size: 18px;
               font-weight: 300;
               line-height: normal;
-              margin-bottom: 18px;
               color: $color-white;
               cursor: pointer;
               pointer-events: all;

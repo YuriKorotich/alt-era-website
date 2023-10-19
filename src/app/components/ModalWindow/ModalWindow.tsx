@@ -1,11 +1,14 @@
-'use client';
+import React, { useEffect } from 'react';
 
-import React, { useEffect, useCallback, useLayoutEffect } from 'react';
-import ReactDOM from 'react-dom';
+import Dialog from '@mui/material/Dialog';
 
-import { useScrollBlock } from '../../utils/useScrollBlock';
+import IconButton from '@mui/material/IconButton';
 
-import styles from './styles.module.scss';
+import Fade from '@mui/material/Fade';
+
+import { Box } from '@mui/system';
+
+import CloseIcon from '@mui/icons-material/Close';
 
 type ModalProps = {
   isOpen: boolean;
@@ -13,53 +16,78 @@ type ModalProps = {
   children?: React.ReactNode;
 };
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }): React.ReactPortal | null => {
-  const modalRoot = typeof document !== 'undefined' ? document.getElementById('modal-root') : null; // for SSR
-  const [blockScroll, allowScroll] = useScrollBlock();
-
-  useLayoutEffect(() => {
-    const setVhProperty = () => {
-      const vh = window.innerHeight * 0.01;
-      document.documentElement.style.setProperty('--vh', `${vh}px`);
+const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && isOpen) {
+        onClose();
+      }
     };
 
-    setVhProperty();
-    window.addEventListener('resize', setVhProperty);
-    return () => window.removeEventListener('resize', setVhProperty);
-  }, []);
-
-  useEffect((): void => {
-    if (isOpen) {
-      blockScroll();
-    } else {
-      allowScroll();
-    }
-  }, [allowScroll, blockScroll, isOpen]);
-
-  const handleKeyDown = useCallback((event: KeyboardEvent): void => {
-    if (event.key === 'Escape' && isOpen) onClose();
-  }, [isOpen, onClose]);
-
-  useEffect(() => {
     if (isOpen) {
       document.addEventListener('keydown', handleKeyDown);
     }
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [handleKeyDown, isOpen]);
+  }, [isOpen, onClose]);
 
-  if (!isOpen || !modalRoot) return null;
-
-  return ReactDOM.createPortal(
-    <div className={styles.modalOverlay}>
-      <button type='button' onClick={onClose} className={styles.closeButton}>
-        <span />
-        <span />
-      </button>
-      {children}
-    </div>,
-    modalRoot,
+  return (
+    <Dialog
+      open={isOpen}
+      onClose={onClose}
+      fullScreen
+      TransitionComponent={Fade}
+      transitionDuration={200}
+      PaperProps={{
+        sx: {
+          bgcolor: '#E9BD36',
+          width: '100%',
+          height: 'calc(var(--vh, 1vh) * 100)',
+          maxHeight: '100%',
+          maxWidth: '100%',
+          overflow: 'auto',
+          position: 'fixed',
+          top: '0',
+          bottom: '0',
+          left: '0',
+          right: '0',
+          zIndex: '1300',
+        },
+      }}
+    >
+      <Box
+        sx={{
+          bgcolor: '#E9BD36',
+          width: '100%',
+          height: '100%',
+          maxHeight: '100%',
+          maxWidth: '100%',
+          position: 'relative',
+        }}
+      >
+        <IconButton
+          aria-label='close'
+          onClick={onClose}
+          sx={{
+            position: 'absolute',
+            right: '16px',
+            top: '16px',
+            width: '34px',
+            height: '34px',
+            color: 'white',
+          }}
+        >
+          <CloseIcon
+            sx={{
+              width: '34px',
+              height: '34px',
+            }}
+          />
+        </IconButton>
+        {children}
+      </Box>
+    </Dialog>
   );
 };
 
