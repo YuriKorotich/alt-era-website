@@ -31,7 +31,7 @@ const FollowUs = () => (
         <div className={styles.image_wrap}>
           {
             contactIcont.map(({ icon, link }) => (
-              <Link href={link} key={icon + link}>
+              <Link href={link} key={icon + link} target='_blank' rel='noopener noreferrer'>
                 <Image
                   key={icon + link}
                   priority

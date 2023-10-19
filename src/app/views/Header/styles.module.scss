@@ -214,18 +214,18 @@
         position: relative;
 
         .head_line { 
+          height: 60px;
           @include flex(flex, row, space-between, flex-end);
 
           .image_wrap {
-            margin-right: 40px;
-            margin-bottom: 0px;
+            height: 100%;
+            @include flex(flex, row, flex-start, center);
+            margin: 0px 40px 0px 0px;
     
               .logo {
                   width: 160px;
                   height: auto;
                   min-width: 160px;
-                  position: relative;
-                  top: 20px;
             }
           }
           .block_nav {
@@ -305,9 +305,9 @@
       }
 
     .block_toggler {
-      @include flex(flex, row, center, flex-end);
-      width: 60px;
-      height: 50px;
+      @include flex(flex, row, center, center);
+      width: 40px;
+      height: 46px;
       z-index: 101;
       cursor: pointer;
 
@@ -356,8 +356,7 @@
       .head_line { 
 
         .image_wrap {
-          margin-right: 0px;
-          margin-bottom: 0px;
+          margin: 0px;
   
             .logo {
                 min-width: 130px;
