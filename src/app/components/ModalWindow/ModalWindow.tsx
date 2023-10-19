@@ -17,13 +17,10 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }): React.React
   const modalRoot = typeof document !== 'undefined' ? document.getElementById('modal-root') : null; // for SSR
   const [blockScroll, allowScroll] = useScrollBlock();
 
-  const setVH = () => {
-    document.documentElement.style.setProperty('--vh', '100vh');
-    requestAnimationFrame(() => {
-      const vh = document.documentElement.clientHeight * 0.01;
-      document.documentElement.style.setProperty('--vh', `${vh}px`);
-    });
-  };
+  const setVH = useCallback(() => {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  }, []);
 
   useEffect(() => {
     setVH();
@@ -35,7 +32,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }): React.React
       window.removeEventListener('resize', setVH);
       window.removeEventListener('scroll', setVH);
     };
-  }, []);
+  }, [setVH]);
 
   useEffect((): void => {
     if (isOpen) {

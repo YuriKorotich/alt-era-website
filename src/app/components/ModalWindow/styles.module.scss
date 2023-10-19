@@ -8,8 +8,8 @@
   right: 0;
   bottom: 0;
   width: 100%;
+  height: 100vh;
   height: calc(var(--vh, 1vh) * 100);
-  min-height: -webkit-fill-available;
   z-index: 1000;
   background: $color-yellow;
   animation: fade-enter 0.2s ease-in both;
