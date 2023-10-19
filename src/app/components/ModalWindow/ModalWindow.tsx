@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useCallback } from 'react';
+import React, { useEffect, useCallback, useLayoutEffect } from 'react';
 import ReactDOM from 'react-dom';
 
 import { useScrollBlock } from '../../utils/useScrollBlock';
@@ -22,8 +22,10 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }): React.React
     document.documentElement.style.setProperty('--vh', `${vh}px`);
   }, []);
 
-  useEffect(() => {
-    setVH();
+  useLayoutEffect(() => {
+    if (!isOpen && !modalRoot) {
+      setVH();
+    }
 
     window.addEventListener('resize', setVH);
     window.addEventListener('scroll', setVH);
@@ -32,7 +34,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }): React.React
       window.removeEventListener('resize', setVH);
       window.removeEventListener('scroll', setVH);
     };
-  }, [setVH]);
+  }, [isOpen, modalRoot, setVH]);
 
   useEffect((): void => {
     if (isOpen) {
