@@ -1,6 +1,6 @@
 {
   "name": "alt-era-website",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev --turbo",
@@ -12,7 +12,10 @@
     "lint:fix_es": "eslint --fix src/**/*.{js,jsx,ts,tsx,json}"
   },
   "dependencies": {
-    "@mui/material": "^5.14.13",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.14.14",
+    "@mui/material": "^5.14.14",
     "@types/aos": "^3.0.5",
     "@types/node": "20.6.2",
     "@types/react": "18.2.22",
