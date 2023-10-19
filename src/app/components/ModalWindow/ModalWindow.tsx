@@ -17,24 +17,16 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }): React.React
   const modalRoot = typeof document !== 'undefined' ? document.getElementById('modal-root') : null; // for SSR
   const [blockScroll, allowScroll] = useScrollBlock();
 
-  const setVH = useCallback(() => {
-    const vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-  }, []);
-
-  useLayoutEffect(() => {
-    if (isOpen && modalRoot) {
-      setVH();
-    }
-
-    window.addEventListener('resize', setVH);
-    window.addEventListener('scroll', setVH);
-
-    return () => {
-      window.removeEventListener('resize', setVH);
-      window.removeEventListener('scroll', setVH);
+  useEffect(() => {
+    const setVhProperty = () => {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
     };
-  }, [isOpen, modalRoot, setVH]);
+
+    setVhProperty();
+    window.addEventListener('resize', setVhProperty);
+    return () => window.removeEventListener('resize', setVhProperty);
+  }, []);
 
   useEffect((): void => {
     if (isOpen) {
