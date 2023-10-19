@@ -8,14 +8,15 @@
 }
 
 .wrapper_contact_form {
-    @include flex(flex, column, flex-start, center);
+    @include flex(flex, column, center, center);
     width: 100%;
-    margin-top: 90px;
-    padding: 40px;
+    height: 100%;
+    padding: 40px 10px;
 
     .block_contact_form {
-        @include flex(flex, column, flex-start, stretch);
+        @include flex(flex, column, center, stretch);
         max-width: 1440px;
+        height: 100%;
 
         .title_contact_form {
             color: $color-gray;
@@ -75,13 +76,10 @@
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 560px) {
     .wrapper_contact_form {
         margin-top: 60px;
-        padding: 40px 10px;
-
         .block_contact_form {
-
             .title_contact_form {
                 font-size: 18px;
                 margin-bottom: 30px;
