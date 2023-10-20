@@ -10,7 +10,7 @@ import Box from '@mui/material/Box';
 
 import CloseIcon from '@mui/icons-material/Close';
 
-import { RemoveScroll } from 'react-remove-scroll';
+import { useScrollBlock } from '../../utils/useScrollBlock';
 
 type ModalProps = {
   isOpen: boolean;
@@ -19,6 +19,14 @@ type ModalProps = {
 };
 
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
+  const [blockScroll, allowScroll] = useScrollBlock();
+
+  useEffect((): void => {
+    if (isOpen) {
+      blockScroll();
+    }
+  }, [isOpen, blockScroll]);
+
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape' && isOpen) {
@@ -35,63 +43,62 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
   }, [isOpen, onClose]);
 
   return (
-    <RemoveScroll enabled={isOpen}>
-      <Dialog
-        open={isOpen}
-        onClose={onClose}
-        fullScreen
-        TransitionComponent={Fade}
-        transitionDuration={200}
-        PaperProps={{
-          sx: {
-            bgcolor: '#E9BD36',
-            width: '100%',
-            height: 'calc(var(--vh, 1vh) * 100)',
-            maxHeight: '100%',
-            maxWidth: '100%',
-            overflow: 'auto',
-            position: 'fixed',
-            top: '0',
-            bottom: '0',
-            left: '0',
-            right: '0',
-            zIndex: '1300',
-          },
+    <Dialog
+      open={isOpen}
+      onClose={onClose}
+      fullScreen
+      TransitionComponent={Fade}
+      transitionDuration={200}
+      TransitionProps={{ onExited: () => allowScroll() }}
+      PaperProps={{
+        sx: {
+          bgcolor: '#E9BD36',
+          width: '100%',
+          height: 'calc(var(--vh, 1vh) * 100)',
+          maxHeight: '100%',
+          maxWidth: '100%',
+          overflow: 'auto',
+          position: 'fixed',
+          top: '0',
+          bottom: '0',
+          left: '0',
+          right: '0',
+          zIndex: '1300',
+        },
+      }}
+    >
+      <Box
+        sx={{
+          bgcolor: '#E9BD36',
+          width: '100%',
+          height: '100%',
+          maxHeight: '100%',
+          maxWidth: '100%',
+          position: 'relative',
         }}
       >
-        <Box
+        <IconButton
+          aria-label='close'
+          onClick={onClose}
           sx={{
-            bgcolor: '#E9BD36',
-            width: '100%',
-            height: '100%',
-            maxHeight: '100%',
-            maxWidth: '100%',
-            position: 'relative',
+            position: 'absolute',
+            right: '16px',
+            top: '16px',
+            width: '34px',
+            height: '34px',
+            color: 'white',
           }}
         >
-          <IconButton
-            aria-label='close'
-            onClick={onClose}
+          <CloseIcon
             sx={{
-              position: 'absolute',
-              right: '16px',
-              top: '16px',
               width: '34px',
               height: '34px',
-              color: 'white',
             }}
-          >
-            <CloseIcon
-              sx={{
-                width: '34px',
-                height: '34px',
-              }}
-            />
-          </IconButton>
-          {children}
-        </Box>
-      </Dialog>
-    </RemoveScroll>
+          />
+        </IconButton>
+        {children}
+      </Box>
+    </Dialog>
   );
 };
 
