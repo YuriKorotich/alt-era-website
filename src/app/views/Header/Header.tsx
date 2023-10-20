@@ -36,7 +36,6 @@ const Header = () => {
   };
 
   const handleCloseModal = (): void => {
-    window.scrollTo(0, 0);
     setIsModalOpen(false);
   };
 
