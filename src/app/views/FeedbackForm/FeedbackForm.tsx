@@ -22,7 +22,7 @@ type TypeSubmitForm = {
 };
 
 const validationSchema = yup.object({
-  electricityFeedback: yup
+  message: yup
     .string()
     .max(500),
   phoneNumber: yup
@@ -42,7 +42,7 @@ const FeedbackForm: React.FC<TypeSubmitForm> = ({ onSubmitSuccess, onSubmitError
 
   const formik = useFormik({
     initialValues: {
-      electricityFeedback: '',
+      message: '',
       phoneNumber: '',
       name: '',
     },
@@ -52,7 +52,7 @@ const FeedbackForm: React.FC<TypeSubmitForm> = ({ onSubmitSuccess, onSubmitError
       try {
         const messageParams = {
           name: values.name,
-          message: values.electricityFeedback,
+          message: values.message,
           phone: values.phoneNumber,
           contactMethod: activeButton,
         };
@@ -76,6 +76,14 @@ const FeedbackForm: React.FC<TypeSubmitForm> = ({ onSubmitSuccess, onSubmitError
       }
     },
   });
+
+  const handleButtonClick = (newActiveButton: string): void => {
+    if (activeButton === newActiveButton) {
+      setActiveButton('');
+    } else {
+      setActiveButton(newActiveButton);
+    }
+  };
 
   const handleKeyDown = useCallback((event: KeyboardEvent): void => {
     if (event.key === 'Enter' && event.keyCode === 13 && formik.isValid) {
@@ -110,14 +118,14 @@ const FeedbackForm: React.FC<TypeSubmitForm> = ({ onSubmitSuccess, onSubmitError
             rows={4}
             label='Місячне споживання електроенергії'
             placeholder='кВт'
-            id='electricityFeedback'
-            name='electricityFeedback'
+            id='message'
+            name='message'
             variant='outlined'
-            value={formik.values.electricityFeedback}
+            value={formik.values.message}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            error={formik.touched.electricityFeedback && Boolean(formik.errors.electricityFeedback)}
-            helperText={formik.touched.electricityFeedback && formik.errors.electricityFeedback}
+            error={formik.touched.message && Boolean(formik.errors.message)}
+            helperText={formik.touched.message && formik.errors.message}
             className={styles.contact_form}
             inputProps={{
               maxLength: 500,
@@ -161,7 +169,7 @@ const FeedbackForm: React.FC<TypeSubmitForm> = ({ onSubmitSuccess, onSubmitError
                 type='button'
                 variant='outlined'
                 className={activeButton === 'call' ? `${styles.button_contact} ${styles.active}` : `${styles.button_contact}`}
-                onClick={(): void => setActiveButton('call')}
+                onClick={(): void => handleButtonClick('call')}
               >
                 дзвінок
               </Button>
@@ -169,7 +177,7 @@ const FeedbackForm: React.FC<TypeSubmitForm> = ({ onSubmitSuccess, onSubmitError
                 type='button'
                 variant='outlined'
                 className={activeButton === 'telegram' ? `${styles.button_contact} ${styles.active}` : `${styles.button_contact}`}
-                onClick={(): void => setActiveButton('telegram')}
+                onClick={(): void => handleButtonClick('telegram')}
               >
                 telegram
               </Button>
@@ -177,7 +185,7 @@ const FeedbackForm: React.FC<TypeSubmitForm> = ({ onSubmitSuccess, onSubmitError
                 type='button'
                 variant='outlined'
                 className={activeButton === 'viber' ? `${styles.button_contact} ${styles.active}` : `${styles.button_contact}`}
-                onClick={(): void => setActiveButton('viber')}
+                onClick={(): void => handleButtonClick('viber')}
               >
                 viber
               </Button>
