@@ -2,10 +2,12 @@
 
 import { useRef } from 'react';
 
-const useScrollBlock = () => {
-  const scroll = useRef(false);
+type ScrollControl = () => void;
 
-  const blockScroll = () => {
+const useScrollBlock = (): [ScrollControl, ScrollControl] => {
+  const scroll = useRef<boolean>(false);
+
+  const blockScroll = (): void => {
     if (typeof document === 'undefined') return;
 
     const html = document.documentElement;
@@ -32,7 +34,7 @@ const useScrollBlock = () => {
     scroll.current = true;
   };
 
-  const allowScroll = () => {
+  const allowScroll = (): void => {
     if (typeof document === 'undefined') return;
 
     const html = document.documentElement;
