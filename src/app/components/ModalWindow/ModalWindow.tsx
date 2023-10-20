@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 import Dialog from '@mui/material/Dialog';
 
@@ -10,7 +10,7 @@ import Box from '@mui/material/Box';
 
 import CloseIcon from '@mui/icons-material/Close';
 
-import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
+import { RemoveScroll } from 'react-remove-scroll';
 
 type ModalProps = {
   isOpen: boolean;
@@ -19,22 +19,6 @@ type ModalProps = {
 };
 
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
-  const dialogRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const currentDialog = dialogRef.current;
-    if (isOpen) {
-      if (currentDialog) {
-        disableBodyScroll(currentDialog);
-      }
-    } else if (currentDialog) {
-      enableBodyScroll(currentDialog);
-    }
-    return () => {
-      clearAllBodyScrollLocks();
-    };
-  }, [isOpen]);
-
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape' && isOpen) {
@@ -51,62 +35,63 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
   }, [isOpen, onClose]);
 
   return (
-    <Dialog
-      open={isOpen}
-      onClose={onClose}
-      fullScreen
-      TransitionComponent={Fade}
-      transitionDuration={200}
-      PaperProps={{
-        sx: {
-          bgcolor: '#E9BD36',
-          width: '100%',
-          height: 'calc(var(--vh, 1vh) * 100)',
-          maxHeight: '100%',
-          maxWidth: '100%',
-          overflow: 'auto',
-          position: 'fixed',
-          top: '0',
-          bottom: '0',
-          left: '0',
-          right: '0',
-          zIndex: '1300',
-        },
-      }}
-    >
-      <Box
-        ref={dialogRef}
-        sx={{
-          bgcolor: '#E9BD36',
-          width: '100%',
-          height: '100%',
-          maxHeight: '100%',
-          maxWidth: '100%',
-          position: 'relative',
+    <RemoveScroll enabled={isOpen}>
+      <Dialog
+        open={isOpen}
+        onClose={onClose}
+        fullScreen
+        TransitionComponent={Fade}
+        transitionDuration={200}
+        PaperProps={{
+          sx: {
+            bgcolor: '#E9BD36',
+            width: '100%',
+            height: 'calc(var(--vh, 1vh) * 100)',
+            maxHeight: '100%',
+            maxWidth: '100%',
+            overflow: 'auto',
+            position: 'fixed',
+            top: '0',
+            bottom: '0',
+            left: '0',
+            right: '0',
+            zIndex: '1300',
+          },
         }}
       >
-        <IconButton
-          aria-label='close'
-          onClick={onClose}
+        <Box
           sx={{
-            position: 'absolute',
-            right: '16px',
-            top: '16px',
-            width: '34px',
-            height: '34px',
-            color: 'white',
+            bgcolor: '#E9BD36',
+            width: '100%',
+            height: '100%',
+            maxHeight: '100%',
+            maxWidth: '100%',
+            position: 'relative',
           }}
         >
-          <CloseIcon
+          <IconButton
+            aria-label='close'
+            onClick={onClose}
             sx={{
+              position: 'absolute',
+              right: '16px',
+              top: '16px',
               width: '34px',
               height: '34px',
+              color: 'white',
             }}
-          />
-        </IconButton>
-        {children}
-      </Box>
-    </Dialog>
+          >
+            <CloseIcon
+              sx={{
+                width: '34px',
+                height: '34px',
+              }}
+            />
+          </IconButton>
+          {children}
+        </Box>
+      </Dialog>
+    </RemoveScroll>
   );
 };
 
