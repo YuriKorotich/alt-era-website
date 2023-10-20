@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 
-import background from '../../../../../public/images/content-images/WhatYouGetBg.jpg';
+import background from '../../../../../public/images/WhatYouGetBg.jpg';
 
 import styles from './styles.module.scss';
 
@@ -12,8 +12,8 @@ const WhatYouGet = () => (
         <Image
           fill
           priority
-          quality={100}
           placeholder='blur'
+          blurDataURL='/images/WhatYouGetBg.jpg'
           src={background}
           alt='background'
           className={styles.background}

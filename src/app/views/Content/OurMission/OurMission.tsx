@@ -1,7 +1,8 @@
 import React from 'react';
+
 import Image from 'next/image';
 
-import image from '../../../../../public/images/content-images/OurMission.jpg';
+import image from '../../../../../public/images/OurMission.jpg';
 
 import styles from './styles.module.scss';
 
@@ -12,12 +13,12 @@ const OurMission = () => (
         <div className={styles.image_wrap} data-aos='zoom-in-up'>
           <Image
             priority
-            quality={100}
             width={780}
             height={560}
             src={image}
             alt='image'
             placeholder='blur'
+            blurDataURL='/images/OurMission.jpg'
             draggable={false}
             className={styles.image}
           />

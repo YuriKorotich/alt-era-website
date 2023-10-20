@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 
-import image from '../../../../../public/images/content-images/MobileApplication.svg';
+import image from '../../../../../public/images/MobileApplication.png';
 
 import styles from './styles.module.scss';
 
@@ -14,13 +14,14 @@ const MobileApplication = () => (
           <div className={styles.image_wrap}>
             <Image
               priority
-              quality={100}
-              width={420}
-              height={428}
+              width={416}
+              height={426}
               src={image}
               alt='image'
               draggable={false}
               className={styles.image}
+              placeholder='blur'
+              blurDataURL='/images/MobileApplication.png'
             />
           </div>
         </div>

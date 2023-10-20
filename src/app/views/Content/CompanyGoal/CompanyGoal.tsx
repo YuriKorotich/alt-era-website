@@ -1,8 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 
-import background from '../../../../../public/images/content-images/CompanyGoalBg.jpg';
-import CompanyGoalMobileBg from '../../../../../public/images/content-images/CompanyGoalMobileBg.jpg';
+import background from '../../../../../public/images/CompanyGoalBg.jpg';
+import CompanyGoalMobileBg from '../../../../../public/images/CompanyGoalMobileBg.jpg';
 
 import styles from './styles.module.scss';
 
@@ -13,8 +13,8 @@ const CompanyGoal = () => (
         <Image
           fill
           priority
-          quality={100}
           placeholder='blur'
+          blurDataURL='/images/CompanyGoalBg.jpg'
           src={background}
           alt='background'
           className={styles.background}
@@ -23,8 +23,8 @@ const CompanyGoal = () => (
         <Image
           fill
           priority
-          quality={100}
           placeholder='blur'
+          blurDataURL='/images/CompanyGoalMobileBg.jpg'
           src={CompanyGoalMobileBg}
           alt='background'
           className={styles.background_mobile}

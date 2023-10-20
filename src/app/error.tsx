@@ -32,6 +32,7 @@ export default function Error({
             src={imageError}
             alt='404-Scarecrow'
             placeholder='blur'
+            blurDataURL='/images/error_img.png'
             draggable={false}
           />
         </div>

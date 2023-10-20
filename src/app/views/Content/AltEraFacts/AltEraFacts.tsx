@@ -2,7 +2,7 @@ import React from 'react';
 
 import Image from 'next/image';
 
-import background from '../../../../../public/images/content-images/AltEraFactsBg.jpg';
+import background from '../../../../../public/images/AltEraFactsBg.jpg';
 
 import AOSAnimationWrapper from './AOSAnimationWrapper';
 
@@ -15,8 +15,8 @@ const AltEraFacts = () => (
         <Image
           fill
           priority
-          quality={100}
           placeholder='blur'
+          blurDataURL='/images/AltEraFactsBg.jpg'
           src={background}
           alt='background'
           className={styles.background}

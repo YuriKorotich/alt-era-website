@@ -9,7 +9,7 @@ export const AOSInit = () => {
     AOS.init({
       easing: 'ease',
       duration: 1000,
-      delay: 50,
+      delay: 0,
       once: true,
       anchorPlacement: 'top-bottom',
     });

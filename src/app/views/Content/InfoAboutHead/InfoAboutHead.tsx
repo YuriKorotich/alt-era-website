@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 
-import image from '../../../../../public/images/content-images/InfoAboutHead.jpg';
+import image from '../../../../../public/images/InfoAboutHead.jpg';
 
 import styles from './styles.module.scss';
 
@@ -24,11 +24,11 @@ const InfoAboutHead = () => (
         <div className={styles.image_wrap} data-aos='zoom-in-up'>
           <Image
             priority
-            quality={100}
             width={425}
             src={image}
             alt='image'
             placeholder='blur'
+            blurDataURL='/images/InfoAboutHead.jpg'
             draggable={false}
             className={styles.image}
           />

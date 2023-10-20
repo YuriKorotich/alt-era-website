@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 
 import Dialog from '@mui/material/Dialog';
 
@@ -10,6 +10,8 @@ import { Box } from '@mui/system';
 
 import CloseIcon from '@mui/icons-material/Close';
 
+import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
+
 type ModalProps = {
   isOpen: boolean;
   onClose: () => void;
@@ -17,6 +19,21 @@ type ModalProps = {
 };
 
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (ref.current !== null) {
+      if (isOpen) {
+        disableBodyScroll(ref.current);
+      } else {
+        enableBodyScroll(ref.current);
+      }
+    }
+    return () => {
+      clearAllBodyScrollLocks();
+    };
+  }, [isOpen]);
+
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape' && isOpen) {
@@ -34,6 +51,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
 
   return (
     <Dialog
+      ref={ref}
       open={isOpen}
       onClose={onClose}
       fullScreen

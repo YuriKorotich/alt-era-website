@@ -1,11 +1,16 @@
 import React, { Fragment } from 'react';
+
 import Image from 'next/image';
 
-import background from '../../../../public/images/footer-Images/footer-bg.jpg';
+import background from '../../../../public/images/footer-bg.jpg';
+
 import Logo from '../../../../public/logo.svg';
-import location from '../../../../public/images/footer-Images/location.svg';
-import phone from '../../../../public/images/footer-Images/phone.svg';
-import mail from '../../../../public/images/footer-Images/mail.svg';
+
+import location from '../../../../public/images/location.svg';
+
+import phone from '../../../../public/images/phone.svg';
+
+import mail from '../../../../public/images/mail.svg';
 
 import styles from './styles.module.scss';
 
@@ -38,8 +43,8 @@ const Footer = () => (
         <Image
           fill
           priority
-          quality={100}
           placeholder='blur'
+          blurDataURL='/images/footer-bg.jpg'
           src={background}
           alt='background'
           className={styles.background}
@@ -50,10 +55,10 @@ const Footer = () => (
         <div className={styles.image_wrap}>
           <Image
             priority
+            quality={100}
             src={Logo}
             width={280}
             height={56}
-            quality={100}
             alt='website log'
             draggable={false}
             className={styles.logo}
@@ -66,11 +71,11 @@ const Footer = () => (
               contactDetails.map(({ text, icon, textDesign }) => (
                 <li key={text + icon}>
                   <Image
+                    quality={100}
                     key={icon + text}
                     src={icon}
                     width={50}
                     height={50}
-                    quality={100}
                     draggable={false}
                     alt='contact icons'
                   />
