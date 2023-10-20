@@ -6,7 +6,7 @@ import IconButton from '@mui/material/IconButton';
 
 import Fade from '@mui/material/Fade';
 
-import { Box } from '@mui/system';
+import Box from '@mui/material/Box';
 
 import CloseIcon from '@mui/icons-material/Close';
 
@@ -19,15 +19,16 @@ type ModalProps = {
 };
 
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
-  const ref = useRef<HTMLDivElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (ref.current !== null) {
-      if (isOpen) {
-        disableBodyScroll(ref.current);
-      } else {
-        enableBodyScroll(ref.current);
+    const currentDialog = dialogRef.current;
+    if (isOpen) {
+      if (currentDialog) {
+        disableBodyScroll(currentDialog);
       }
+    } else if (currentDialog) {
+      enableBodyScroll(currentDialog);
     }
     return () => {
       clearAllBodyScrollLocks();
@@ -51,7 +52,6 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
 
   return (
     <Dialog
-      ref={ref}
       open={isOpen}
       onClose={onClose}
       fullScreen
@@ -75,6 +75,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
       }}
     >
       <Box
+        ref={dialogRef}
         sx={{
           bgcolor: '#E9BD36',
           width: '100%',
