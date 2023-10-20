@@ -209,7 +209,7 @@
     @media (max-width: 880px) {
 
       .conten_wrapper {
-        padding: 20px 20px 0px 20px;
+        padding: 30px 20px 0px 30px;
         position: relative;
 
         .head_line { 
@@ -305,7 +305,7 @@
       }
 
     .block_toggler {
-      @include flex(flex, row, center, center);
+      @include flex(flex, row, flex-end, center);
       width: 40px;
       height: 46px;
       z-index: 101;
