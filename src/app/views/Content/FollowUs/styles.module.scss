@@ -20,6 +20,10 @@
         .image_wrap {
             @include flex(flex, row, flex-start, stretch);
 
+            a {
+                -webkit-tap-highlight-color: transparent;
+            }
+            
             .image {
                 min-width: 48px;
                 min-height: 48px;
