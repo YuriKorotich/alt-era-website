@@ -4,53 +4,47 @@ import { useRef } from 'react';
 
 const useScrollBlock = () => {
   const scroll = useRef(false);
-  const touchMoveListener = useRef(null);
-
-  const preventTouchMove = (e: Event) => {
-    e.preventDefault();
-  };
 
   const blockScroll = () => {
-    if (typeof document === 'undefined' || scroll.current) return;
+    if (typeof document === 'undefined') return;
 
     const html = document.documentElement;
     const { body } = document;
 
-    if (!body || !body.style) return;
+    if (!body || !body.style || scroll.current) return;
 
     const scrollBarWidth = window.innerWidth - html.clientWidth;
     // eslint-disable-next-line radix
     const bodyPaddingRight = parseInt(window.getComputedStyle(body).getPropertyValue('padding-right')) || 0;
 
-    html.style.position = 'fixed';
-    body.style.position = 'fixed';
-    html.style.overflow = 'hidden';
-    body.style.overflow = 'hidden';
+    /**
+     * 1. Fixes a bug in iOS and desktop Safari whereby setting
+     *    `overflow: hidden` on the html/body does not prevent scrolling.
+     * 2. Fixes a bug in desktop Safari where `overflowY` does not prevent
+     *    scroll if an `overflow-x` style is also applied to the body.
+     */
+    html.style.position = 'fixed'; /* [1] */
+    body.style.position = 'fixed'; /* [1] */
+    html.style.overflow = 'hidden'; /* [2] */
+    body.style.overflow = 'hidden'; /* [2] */
     body.style.paddingRight = `${bodyPaddingRight + scrollBarWidth}px`;
-
-    document.addEventListener('touchmove', preventTouchMove, { passive: false });
 
     scroll.current = true;
   };
 
   const allowScroll = () => {
-    if (typeof document === 'undefined' || !scroll.current) return;
+    if (typeof document === 'undefined') return;
 
     const html = document.documentElement;
     const { body } = document;
 
-    if (!body || !body.style) return;
+    if (!body || !body.style || !scroll.current) return;
 
     html.style.position = '';
     html.style.overflow = '';
     body.style.position = '';
     body.style.overflow = '';
     body.style.paddingRight = '';
-
-    if (touchMoveListener.current) {
-      document.removeEventListener('touchmove', touchMoveListener.current);
-      touchMoveListener.current = null;
-    }
 
     scroll.current = false;
   };

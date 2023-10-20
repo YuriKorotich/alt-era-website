@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 
 import Dialog from '@mui/material/Dialog';
 
@@ -12,6 +12,8 @@ import CloseIcon from '@mui/icons-material/Close';
 
 import { useScrollBlock } from '../../utils/useScrollBlock';
 
+import useMobileScrollControl from '../../utils/useMobileScrollControl';
+
 type ModalProps = {
   isOpen: boolean;
   onClose: () => void;
@@ -19,8 +21,10 @@ type ModalProps = {
 };
 
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
+  const modalContentRef = useRef<HTMLDivElement>(null);
   const [blockScroll, allowScroll] = useScrollBlock();
 
+  useMobileScrollControl(modalContentRef, isOpen);
   useEffect((): void => {
     if (isOpen) {
       blockScroll();
@@ -44,6 +48,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
 
   return (
     <Dialog
+      ref={modalContentRef}
       open={isOpen}
       onClose={onClose}
       fullScreen
