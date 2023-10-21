@@ -1,7 +1,9 @@
 import React from 'react';
+
 import Image from 'next/image';
 
 import background from '../../../../../public/images/CompanyGoalBg.jpg';
+
 import CompanyGoalMobileBg from '../../../../../public/images/CompanyGoalMobileBg.jpg';
 
 import styles from './styles.module.scss';

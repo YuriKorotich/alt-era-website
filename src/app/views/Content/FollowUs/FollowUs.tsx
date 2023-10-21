@@ -1,8 +1,11 @@
 import React from 'react';
+
 import Image from 'next/image';
+
 import Link from 'next/link';
 
 import facebook from '../../../../../public/images/fb.svg';
+
 import instagram from '../../../../../public/images/instagram.svg';
 
 import styles from './styles.module.scss';
