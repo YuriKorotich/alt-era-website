@@ -52,7 +52,7 @@
 .conten_wrapper {
   height: 100vh;
   @include flex(flex, column, flex-start, stretch);
-  padding: 60px 30px 0px 30px;
+  padding: 60px 50px 0px 50px;
 
   .head_line { 
     @include flex(flex, row, space-between, flex-end);
@@ -110,6 +110,10 @@
           white-space: nowrap;
           user-select: none;
     
+          &:last-of-type {
+            margin-right: 0px;
+          }
+
           @media (hover: hover) {
             &:hover {
               transition: all 250ms ease-in-out;
