@@ -13,11 +13,11 @@ import styles from './styles.module.scss';
 const contactIcont: Array<TypeIcons> = [
   {
     icon: facebook,
-    link: 'https://www.facebook.com/profile.php?id=61550945674381',
+    link: 'https://www.facebook.com/AltEraCom',
   },
   {
     icon: instagram,
-    link: 'https://www.instagram.com/alt_era_com/',
+    link: 'https://www.instagram.com/alt_era_com',
   },
 ];
 

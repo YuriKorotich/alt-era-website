@@ -1,4 +1,6 @@
-import React from 'react';
+/* eslint-disable max-len */
+
+import React, { Fragment } from 'react';
 
 import './globals.css';
 
@@ -42,7 +44,7 @@ const gothamPro = localFont({
 
 export const metadata: Metadata = {
   title: 'Alt Era',
-  description: '«ALT-ERA» — це компанія, що займається відновлюваною енергетикою, яка створює нову альтернативну енергію.',
+  description: '«ALT-ERA» — це компанія, що займається відновлюваною енергетикою, яка створює нову альтернативну енергію. Ми проєктуємо, розробляємо, будуємо електростанції з альтернативних джерел енергії, які виробляють екологічно чисту електроенергію.',
   metadataBase: new URL('https://alt-era.com'),
   generator: 'Next.js',
   applicationName: 'Alt Era',
@@ -80,7 +82,7 @@ export const metadata: Metadata = {
     siteName: 'Alt Era',
     images: [
       {
-        url: '../../public/logo.svg',
+        url: 'https://alt-era.com/logo.svg',
         width: 280,
         height: 56,
       },
@@ -114,16 +116,20 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang='en' suppressHydrationWarning>
+    <Fragment>
       <AOSInit />
-      <body className={gothamPro.variable} style={{ overflow: 'hidden' }}>
-        <LoadingProvider>
-          <Loader />
-          {children}
-          <div id='modal-root' />
-          <Analytics />
-        </LoadingProvider>
-      </body>
-    </html>
+      <html lang='uk' suppressHydrationWarning>
+        <link rel='canonical' href='https://alt-era.com' />
+        <meta property='og:article:author' content='https://www.facebook.com/AltEraCom' />
+        <meta property='instagram:author' content='https://www.instagram.com/alt_era_com' />
+        <body className={gothamPro.variable} style={{ overflow: 'hidden' }}>
+          <LoadingProvider>
+            <Loader />
+            {children}
+            <Analytics />
+          </LoadingProvider>
+        </body>
+      </html>
+    </Fragment>
   );
 }
