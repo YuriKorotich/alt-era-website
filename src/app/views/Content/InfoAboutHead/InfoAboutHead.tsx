@@ -24,7 +24,6 @@ const InfoAboutHead = () => (
         </div>
         <div className={styles.image_wrap} data-aos='zoom-in-up'>
           <Image
-            width={425}
             src={image}
             alt='image'
             placeholder='blur'

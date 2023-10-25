@@ -28,7 +28,6 @@ export default function Error({
       <div className={styles.display}>
         <div className={styles.display_img}>
           <Image
-            width={660}
             src={imageError}
             alt='404-Scarecrow'
             placeholder='blur'

@@ -56,8 +56,6 @@ const Footer = () => (
           <Image
             quality={100}
             src={Logo}
-            width={280}
-            height={56}
             alt='website log'
             draggable={false}
             className={styles.logo}
@@ -73,8 +71,6 @@ const Footer = () => (
                     quality={100}
                     key={icon + text}
                     src={icon}
-                    width={50}
-                    height={50}
                     draggable={false}
                     alt='contact icons'
                   />

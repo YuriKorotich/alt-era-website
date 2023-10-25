@@ -38,8 +38,6 @@ const FollowUs = () => (
                 <Image
                   key={icon + link}
                   quality={100}
-                  width={48}
-                  height={48}
                   src={icon}
                   alt='icon'
                   draggable={false}

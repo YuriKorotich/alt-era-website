@@ -17,6 +17,7 @@ const WhatYouGet = () => (
           blurDataURL='/images/WhatYouGetBg.jpg'
           src={background}
           alt='background'
+          sizes='100vw'
           className={styles.background}
         />
       </div>

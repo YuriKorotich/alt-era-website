@@ -14,8 +14,6 @@ const MobileApplication = () => (
           <h1 className='title_h1'>Мобільний додаток</h1>
           <div className={styles.image_wrap}>
             <Image
-              width={416}
-              height={426}
               src={image}
               alt='image'
               draggable={false}

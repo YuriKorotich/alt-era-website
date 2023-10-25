@@ -25,8 +25,6 @@ const WhoAreWe = () => (
         </div>
         <div className={styles.image_wrap} data-aos='zoom-in-up'>
           <Image
-            width={780}
-            height={560}
             src={image}
             alt='image'
             placeholder='blur'

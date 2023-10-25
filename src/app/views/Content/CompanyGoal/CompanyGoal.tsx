@@ -19,6 +19,7 @@ const CompanyGoal = () => (
           blurDataURL='/images/CompanyGoalBg.jpg'
           src={background}
           alt='background'
+          sizes='100vw'
           className={styles.background}
         />
         <Image
@@ -28,6 +29,7 @@ const CompanyGoal = () => (
           blurDataURL='/images/CompanyGoalMobileBg.jpg'
           src={CompanyGoalMobileBg}
           alt='background'
+          sizes='100vw'
           className={styles.background_mobile}
         />
       </div>
