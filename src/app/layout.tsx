@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 
-import React, { Fragment } from 'react';
+import React from 'react';
 
 import './globals.css';
 
@@ -116,20 +116,18 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <Fragment>
+    <html lang='uk' suppressHydrationWarning>
       <AOSInit />
-      <html lang='uk' suppressHydrationWarning>
-        <link rel='canonical' href='https://alt-era.com' />
-        <meta property='facebook:author' content='https://www.facebook.com/AltEraCom' />
-        <meta property='instagram:author' content='https://www.instagram.com/alt_era_com' />
-        <body className={gothamPro.variable} style={{ overflow: 'hidden' }}>
-          <LoadingProvider>
-            <Loader />
-            {children}
-            <Analytics />
-          </LoadingProvider>
-        </body>
-      </html>
-    </Fragment>
+      <link rel='canonical' href='https://alt-era.com' />
+      <meta property='facebook:author' content='https://www.facebook.com/AltEraCom' />
+      <meta property='instagram:author' content='https://www.instagram.com/alt_era_com' />
+      <body className={gothamPro.variable} style={{ overflow: 'hidden' }}>
+        <LoadingProvider>
+          <Loader />
+          {children}
+          <Analytics />
+        </LoadingProvider>
+      </body>
+    </html>
   );
 }
