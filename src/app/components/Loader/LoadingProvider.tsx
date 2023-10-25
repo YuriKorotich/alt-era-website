@@ -34,7 +34,7 @@ export const LoadingProvider: React.FC<LoadingProviderProps> = ({ children }) =>
 
   useEffect(() => {
     const fetchData = async () => {
-      await new Promise((resolve) => { setTimeout(resolve, 3000); });
+      await new Promise((resolve) => { setTimeout(resolve, 2000); });
       setLoading(false);
     };
     fetchData();
