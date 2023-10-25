@@ -6,8 +6,6 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "optimize-images": "node optimize-images.js",
-    "postbuild": "npm run optimize-images",
     "lint": "next lint",
     "lint_es": "eslint src/**/*.{js,jsx,ts,tsx,json}",
     "lint:fix_es": "eslint --fix src/**/*.{js,jsx,ts,tsx,json}"
