@@ -19,7 +19,6 @@ const AltEraFacts = () => (
           blurDataURL='/images/AltEraFactsBg.jpg'
           src={background}
           alt='background'
-          sizes='100vw'
           className={styles.background}
         />
       </div>

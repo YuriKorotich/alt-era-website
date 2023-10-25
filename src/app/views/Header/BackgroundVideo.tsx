@@ -54,7 +54,6 @@ const BackgroundVideo = ({ screenWidthMobile }: { screenWidthMobile: boolean }) 
             blurDataURL={imageSrc}
             src={imageSrc}
             alt='Video Placeholder'
-            sizes='100vw'
             className={styles.placeholder}
           />
         )}
