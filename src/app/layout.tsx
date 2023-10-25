@@ -120,7 +120,7 @@ export default function RootLayout({
       <AOSInit />
       <html lang='uk' suppressHydrationWarning>
         <link rel='canonical' href='https://alt-era.com' />
-        <meta property='og:article:author' content='https://www.facebook.com/AltEraCom' />
+        <meta property='facebook:author' content='https://www.facebook.com/AltEraCom' />
         <meta property='instagram:author' content='https://www.instagram.com/alt_era_com' />
         <body className={gothamPro.variable} style={{ overflow: 'hidden' }}>
           <LoadingProvider>

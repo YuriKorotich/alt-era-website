@@ -39,9 +39,6 @@ const BtnScrollToTop = () => {
     <div className={styles.top_to_btm}>
       {showTopBtn && (
         <Image
-          width={64}
-          height={64}
-          priority
           quality={100}
           src={image}
           alt='icon'

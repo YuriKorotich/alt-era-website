@@ -37,10 +37,7 @@ const FollowUs = () => (
               <Link href={link} key={icon + link} target='_blank' rel='noopener noreferrer'>
                 <Image
                   key={icon + link}
-                  priority
                   quality={100}
-                  width={48}
-                  height={48}
                   src={icon}
                   alt='icon'
                   draggable={false}

@@ -20,7 +20,7 @@ const CompanyGoal = () => (
           src={background}
           alt='background'
           className={styles.background}
-          sizes='(max-width: 100vw) 100%, 100vh'
+          sizes='100vw'
         />
         <Image
           fill
@@ -30,7 +30,7 @@ const CompanyGoal = () => (
           src={CompanyGoalMobileBg}
           alt='background'
           className={styles.background_mobile}
-          sizes='(max-width: 460px) 100%, 100vh'
+          sizes='100vw'
         />
       </div>
       <div className={styles.block_content} data-aos='fade-up'>

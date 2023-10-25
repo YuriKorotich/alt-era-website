@@ -12,9 +12,6 @@ const HowWeWork = () => (
       <div className={styles.block_content}>
         <div className={styles.image_wrap} data-aos='zoom-in-up'>
           <Image
-            priority
-            width={780}
-            height={560}
             src={image}
             alt='image'
             placeholder='blur'

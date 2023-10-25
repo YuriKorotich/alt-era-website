@@ -49,10 +49,12 @@ const BackgroundVideo = ({ screenWidthMobile }: { screenWidthMobile: boolean }) 
           <Image
             fill
             priority
+            quality={100}
             placeholder='blur'
             blurDataURL={imageSrc}
             src={imageSrc}
             alt='Video Placeholder'
+            sizes='100vw'
             className={styles.placeholder}
           />
         )}
